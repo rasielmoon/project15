@@ -1,0 +1,6 @@
+set RTL "rtl/b12.vhd"
+set TOP "b12"
+set CLOCK_PORT "clock"
+set CLOCK_PERIOD "5"
+set RESET_PORT "reset"
+set CHAIN_COUNT "2"

@@ -1,0 +1,57 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : b12
+Version: F-2011.09-SP3
+Date   : Tue Oct 27 16:44:22 2015
+****************************************
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: top
+
+  Startpoint: count_reg2[4]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: play_reg (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  b12                ForQA                 saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  count_reg2[4]/CLK (SDFFARX1)             0.00       0.00 r
+  count_reg2[4]/Q (SDFFARX1)               0.21       0.21 f
+  U512/Q (OR3X1)                           0.15       0.35 f
+  U855/QN (NOR4X0)                         0.26       0.61 r
+  U775/ZN (INVX0)                          0.24       0.85 f
+  U341/Q (OR2X1)                           0.15       1.00 f
+  U340/QN (NAND3X0)                        0.10       1.10 r
+  U776/ZN (INVX0)                          0.08       1.19 f
+  U339/QN (NAND3X0)                        0.11       1.29 r
+  U722/ZN (INVX0)                          0.10       1.39 f
+  U896/QN (NAND2X1)                        0.10       1.49 r
+  U895/ZN (INVX0)                          0.06       1.56 f
+  U337/Q (AO22X1)                          0.11       1.66 f
+  play_reg/D (SDFFARX1)                    0.03       1.69 f
+  data arrival time                                   1.69
+
+  clock clock (rise edge)                  5.00       5.00
+  clock network delay (ideal)              0.00       5.00
+  play_reg/CLK (SDFFARX1)                  0.00       5.00 r
+  library setup time                      -0.13       4.87
+  data required time                                  4.87
+  -----------------------------------------------------------
+  data required time                                  4.87
+  data arrival time                                  -1.69
+  -----------------------------------------------------------
+  slack (MET)                                         3.18
+
+
+1

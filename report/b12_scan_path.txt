@@ -1,0 +1,180 @@
+ 
+****************************************
+Report : Scan path
+Design : b12
+Version: F-2011.09-SP3
+Date   : Tue Oct 27 16:44:22 2015
+****************************************
+
+========================================
+TEST MODE: Internal_scan
+VIEW     : Specification
+========================================
+No scan path defined in this mode.
+
+ 
+****************************************
+Report : Scan path
+Design : b12
+Version: F-2011.09-SP3
+Date   : Tue Oct 27 16:44:22 2015
+****************************************
+
+========================================
+TEST MODE: Internal_scan
+VIEW     : Existing DFT
+========================================
+
+========================================
+AS SPECIFIED BY USER
+========================================
+
+
+========================================
+AS BUILT BY insert_dft
+========================================
+
+Scan_path    Len   ScanDataIn  ScanDataOut ScanEnable  MasterClock SlaveClock
+-----------  ----- ----------- ----------- ----------- ----------- -----------
+I 1          61    test_si1    test_so1    test_se     clock       -
+I 2          60    test_si2    test_so2    test_se     clock       -
+
+========================================
+TEST MODE: Internal_scan
+VIEW     : Existing DFT
+========================================
+
+========================================
+AS SPECIFIED BY USER
+========================================
+
+
+========================================
+AS BUILT BY insert_dft
+========================================
+
+Scan_path     Cell_#    Instance_name            Clocks
+---------     ------    -------------            ------
+I 1           0         address_reg[0]           clock 
+              1         address_reg[1]
+              2         address_reg[2]
+              3         address_reg[3]
+              4         address_reg[4]
+              5         count_reg2[0]
+              6         count_reg2[1]
+              7         count_reg2[2]
+              8         count_reg2[3]
+              9         count_reg2[4]
+              10        count_reg2[5]
+              11        count_reg[0]
+              12        count_reg[1]
+              13        counter_reg[0]
+              14        counter_reg[1]
+              15        counter_reg[2]
+              16        data_in_reg[0]
+              17        data_in_reg[1]
+              18        data_out_reg[0]
+              19        data_out_reg[1]
+              20        gamma_reg[0]
+              21        gamma_reg[1]
+              22        gamma_reg[2]
+              23        gamma_reg[3]
+              24        gamma_reg[4]
+              25        ind_reg[0]
+              26        ind_reg[1]
+              27        max_reg[0]
+              28        max_reg[1]
+              29        max_reg[2]
+              30        max_reg[3]
+              31        max_reg[4]
+              32        memory_reg[0][0]
+              33        memory_reg[0][1]
+              34        memory_reg[1][0]
+              35        memory_reg[1][1]
+              36        memory_reg[2][0]
+              37        memory_reg[2][1]
+              38        memory_reg[3][0]
+              39        memory_reg[3][1]
+              40        memory_reg[4][0]
+              41        memory_reg[4][1]
+              42        memory_reg[5][0]
+              43        memory_reg[5][1]
+              44        memory_reg[6][0]
+              45        memory_reg[6][1]
+              46        memory_reg[7][0]
+              47        memory_reg[7][1]
+              48        memory_reg[8][0]
+              49        memory_reg[8][1]
+              50        memory_reg[9][0]
+              51        memory_reg[9][1]
+              52        memory_reg[10][0]
+              53        memory_reg[10][1]
+              54        memory_reg[11][0]
+              55        memory_reg[11][1]
+              56        memory_reg[12][0]
+              57        memory_reg[12][1]
+              58        memory_reg[13][0]
+              59        memory_reg[13][1]
+              60        memory_reg[14][0]
+I 2           0         memory_reg[14][1]        clock 
+              1         memory_reg[15][0]
+              2         memory_reg[15][1]
+              3         memory_reg[16][0]
+              4         memory_reg[16][1]
+              5         memory_reg[17][0]
+              6         memory_reg[17][1]
+              7         memory_reg[18][0]
+              8         memory_reg[18][1]
+              9         memory_reg[19][0]
+              10        memory_reg[19][1]
+              11        memory_reg[20][0]
+              12        memory_reg[20][1]
+              13        memory_reg[21][0]
+              14        memory_reg[21][1]
+              15        memory_reg[22][0]
+              16        memory_reg[22][1]
+              17        memory_reg[23][0]
+              18        memory_reg[23][1]
+              19        memory_reg[24][0]
+              20        memory_reg[24][1]
+              21        memory_reg[25][0]
+              22        memory_reg[25][1]
+              23        memory_reg[26][0]
+              24        memory_reg[26][1]
+              25        memory_reg[27][0]
+              26        memory_reg[27][1]
+              27        memory_reg[28][0]
+              28        memory_reg[28][1]
+              29        memory_reg[29][0]
+              30        memory_reg[29][1]
+              31        memory_reg[30][0]
+              32        memory_reg[30][1]
+              33        memory_reg[31][0]
+              34        memory_reg[31][1]
+              35        nl_reg[0]
+              36        nl_reg[1]
+              37        nl_reg[2]
+              38        nl_reg[3]
+              39        nloss_reg
+              40        num_reg[0]
+              41        num_reg[1]
+              42        play_reg
+              43        s_reg
+              44        scan_reg[0]
+              45        scan_reg[1]
+              46        scan_reg[2]
+              47        scan_reg[3]
+              48        scan_reg[4]
+              49        sound_reg[0]
+              50        sound_reg[1]
+              51        sound_reg[2]
+              52        speaker_reg
+              53        timebase_reg[0]
+              54        timebase_reg[1]
+              55        timebase_reg[2]
+              56        timebase_reg[3]
+              57        timebase_reg[4]
+              58        timebase_reg[5]
+              59        wr_reg
+
+1
