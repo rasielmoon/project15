@@ -1,0 +1,84 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : b19
+Version: F-2011.09-SP3
+Date   : Tue Nov 10 15:03:41 2015
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: top
+
+  Startpoint: P1/P3/datao_reg[20]
+              (rising edge-triggered flip-flop)
+  Endpoint: ris[29] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  b19                ForQA                 saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  P1/P3/datao_reg[20]/CLK (SDFFARX1)       0.00 #     0.00 r
+  P1/P3/datao_reg[20]/QN (SDFFARX1)        0.16       0.16 f
+  U33974/QN (NAND4X0)                      0.14       0.30 r
+  U33973/QN (NOR4X0)                       0.10       0.41 f
+  U33970/QN (NAND4X0)                      0.10       0.50 r
+  U33969/QN (NAND2X0)                      0.08       0.58 f
+  U33968/QN (NAND3X0)                      0.08       0.66 r
+  U33967/QN (NAND2X0)                      0.08       0.74 f
+  U33966/ZN (INVX0)                        0.11       0.85 r
+  U33965/QN (NOR2X0)                       0.13       0.97 f
+  U33962/Q (AO222X1)                       0.16       1.13 f
+  U33961/ZN (INVX0)                        0.08       1.21 r
+  U33960/Q (MUX21X1)                       0.21       1.42 r
+  U20632/QN (NOR2X0)                       0.17       1.59 f
+  U131/Q (AND2X1)                          0.12       1.71 f
+  P1/mult_1439/S1_2_0/CO (FADDX1)          0.30       2.02 f
+  P1/mult_1439/S1_3_0/CO (FADDX1)          0.31       2.32 f
+  P1/mult_1439/S1_4_0/CO (FADDX1)          0.31       2.63 f
+  P1/mult_1439/S1_5_0/CO (FADDX1)          0.31       2.93 f
+  P1/mult_1439/S1_6_0/CO (FADDX1)          0.31       3.24 f
+  P1/mult_1439/S1_7_0/CO (FADDX1)          0.31       3.54 f
+  P1/mult_1439/S1_8_0/CO (FADDX1)          0.31       3.85 f
+  P1/mult_1439/S1_9_0/CO (FADDX1)          0.31       4.15 f
+  P1/mult_1439/S1_10_0/CO (FADDX1)         0.31       4.46 f
+  P1/mult_1439/S1_11_0/CO (FADDX1)         0.31       4.76 f
+  P1/mult_1439/S1_12_0/CO (FADDX1)         0.31       5.07 f
+  P1/mult_1439/S1_13_0/CO (FADDX1)         0.31       5.37 f
+  P1/mult_1439/S1_14_0/CO (FADDX1)         0.31       5.68 f
+  P1/mult_1439/S1_15_0/CO (FADDX1)         0.31       5.98 f
+  P1/mult_1439/S1_16_0/CO (FADDX1)         0.31       6.29 f
+  P1/mult_1439/S1_17_0/CO (FADDX1)         0.31       6.59 f
+  P1/mult_1439/S4_0/S (FADDX1)             0.31       6.91 f
+  U5989/ZN (INVX0)                         0.09       7.00 r
+  U5988/QN (NOR2X0)                        0.11       7.11 f
+  U4926/Q (XOR2X1)                         0.16       7.27 f
+  mult_1514/S2_2_16/S (FADDX1)             0.24       7.52 f
+  mult_1514/S2_3_15/S (FADDX1)             0.24       7.76 f
+  mult_1514/S4_14/S (FADDX1)               0.24       8.00 f
+  U4905/Q (XOR2X1)                         0.16       8.16 f
+  U33910/Q (XOR3X1)                        0.27       8.42 f
+  sub_1514_3/U2_18/CO (FADDX1)             0.28       8.70 f
+  sub_1514_3/U2_19/CO (FADDX1)             0.23       8.94 f
+  sub_1514_3/U2_20/CO (FADDX1)             0.23       9.17 f
+  sub_1514_3/U2_21/CO (FADDX1)             0.23       9.41 f
+  sub_1514_3/U2_22/CO (FADDX1)             0.23       9.64 f
+  sub_1514_3/U2_23/CO (FADDX1)             0.23       9.87 f
+  sub_1514_3/U2_24/CO (FADDX1)             0.23      10.11 f
+  sub_1514_3/U2_25/CO (FADDX1)             0.23      10.34 f
+  sub_1514_3/U2_26/S (FADDX1)              0.23      10.57 f
+  ris[29] (out)                            0.01      10.58 f
+  data arrival time                                  10.58
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

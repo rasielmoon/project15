@@ -7,7 +7,6 @@ import argparse
 def find_out(file1,file2,chain,period):
 	flg = 0
 	for line in open(file1,'r'):
-
 		if flg == 0:
 			x = re.search(r'process',line)
 			if x:
@@ -24,11 +23,12 @@ def find_out(file1,file2,chain,period):
 				flg = 1
 
 	
-	z = re.search(r'b\d\d',file1)
-	
+	z = file1[4:-4]	
+
 	f_write = open(file2,'w')
 	f_write.write('set RTL "' + file1 + '"\n')	
-	f_write.write('set TOP "' + z.group(0) + '"\n')		
+	f_write.write('set TOP "' + z  + '"\n')		
+
 	f_write.write('set CLOCK_PORT "' + clk + '"\n')
 	f_write.write('set CLOCK_PERIOD "' + period + '"\n')
 	f_write.write('set RESET_PORT "' + rst + '"\n')
@@ -45,6 +45,7 @@ if __name__ == '__main__':
 	Input_filename = args.file_name
 	chain = args.chain_count
 	period = args.c_period
+
 	Output_filename = "tcl/name.txt"
 
 	find_out(Input_filename,Output_filename,chain,period)

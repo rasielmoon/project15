@@ -22,5 +22,6 @@ set Verilog_lib "/cad/lib/SAED_EDK90nm/SAED_EDK90nm/Digital_Standard_Cell_Librar
 # Scan Chain Configuration
 ############################################
 #set CHAIN_COUNT "2"
+set FILL_OPTION "X"
 
 
