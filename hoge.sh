@@ -17,5 +17,8 @@ dc_shell -f ./tcl/dc_scan.tcl
 #テスト生成(遷移故障,LOC)
 tmax -shell ./tcl/tmax_tdf_atpg_loc.tcl
 
+#出てきたファイルを改行していくだけ
+python3 src/enter.py  -i "${filepass}" -c "${chain}"
+
 #x_fillファイル生成 my_fill
 python3 src/X_fill.py  -i "${filepass}" -c "${chain}"

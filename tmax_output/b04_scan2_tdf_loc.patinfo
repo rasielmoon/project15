@@ -1,0 +1,42 @@
+STIL 1.0 {
+   Design P2002.13;
+   CTL P2002.18;
+   TRC P2002.3;
+}
+Header {
+   Title "  TetraMAX (TM)  C-2009.06-i090521_205411 STIL output";
+   Date "Tue Nov 17 16:12:17 2015";
+   Source "Minimal STIL for design `b04'";
+   History {
+      Ann {*  Tue Nov 17 16:12:14 2015  *}
+      Ann {*  DFT Compiler F-2011.09-SP3  *}
+   }         //end History
+}            //end Header
+PatternInformation {
+   Pattern "_pattern_" {
+      Purpose Scan;
+      FileReference "./tmax_output/b04_scan2_tdf_loc.stil";
+      PatternCharacteristics {
+         BreakPoint No;
+         ConditionalStatements No;
+         CoreUsageReady No;
+         NonCyclized No;
+         DeltaChangeVectorData Yes;
+         GoTo No;
+         IddqTestPoints No;
+         Macro Yes;
+         MultiBitData No;
+         NumberPatternUnits 58;
+         PatternVariables No;
+         ProcedureCalls WithParameters;
+         Shift Yes;
+         STILPatterns Yes;
+      }      //end PatternCharacteristics
+      Fault {
+         Type Transition;
+         FaultCount 2102;
+         FaultsDetected 1178;
+         FaultCoverage 56;
+      }      //end Fault
+   }         //end Pattern
+}            //end PatternInformation

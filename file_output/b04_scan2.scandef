@@ -1,0 +1,87 @@
+VERSION 5.5 ;
+NAMESCASESENSITIVE ON ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN b04 ;
+
+SCANCHAINS 2 ;
+
+- 1
++ START PIN test_si1
++ FLOATING DATA_OUT_reg_0_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_1_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_2_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_3_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_4_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_5_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_6_ ( IN SI ) ( OUT Q )
+           DATA_OUT_reg_7_ ( IN SI ) ( OUT Q )
+           REG1_reg_0_ ( IN SI ) ( OUT Q )
+           REG1_reg_1_ ( IN SI ) ( OUT Q )
+           REG1_reg_2_ ( IN SI ) ( OUT Q )
+           REG1_reg_3_ ( IN SI ) ( OUT Q )
+           REG1_reg_4_ ( IN SI ) ( OUT Q )
+           REG1_reg_5_ ( IN SI ) ( OUT Q )
+           REG1_reg_6_ ( IN SI ) ( OUT Q )
+           REG1_reg_7_ ( IN SI ) ( OUT Q )
+           REG2_reg_0_ ( IN SI ) ( OUT Q )
+           REG2_reg_1_ ( IN SI ) ( OUT Q )
+           REG2_reg_2_ ( IN SI ) ( OUT Q )
+           REG2_reg_3_ ( IN SI ) ( OUT Q )
+           REG2_reg_4_ ( IN SI ) ( OUT Q )
+           REG2_reg_5_ ( IN SI ) ( OUT Q )
+           REG2_reg_6_ ( IN SI ) ( OUT Q )
+           REG2_reg_7_ ( IN SI ) ( OUT Q )
+           REG3_reg_0_ ( IN SI ) ( OUT Q )
+           REG3_reg_1_ ( IN SI ) ( OUT Q )
+           REG3_reg_2_ ( IN SI ) ( OUT Q )
+           REG3_reg_3_ ( IN SI ) ( OUT Q )
+           REG3_reg_4_ ( IN SI ) ( OUT Q )
+           REG3_reg_5_ ( IN SI ) ( OUT Q )
+           REG3_reg_6_ ( IN SI ) ( OUT Q )
+           REG3_reg_7_ ( IN SI ) ( OUT Q )
+           REG4_reg_0_ ( IN SI ) ( OUT Q )
++ PARTITION CLOCK_45_45
++ STOP PIN test_so1 ;
+
+- 2
++ START PIN test_si2
++ FLOATING REG4_reg_1_ ( IN SI ) ( OUT Q )
+           REG4_reg_2_ ( IN SI ) ( OUT Q )
+           REG4_reg_3_ ( IN SI ) ( OUT Q )
+           REG4_reg_4_ ( IN SI ) ( OUT Q )
+           REG4_reg_5_ ( IN SI ) ( OUT Q )
+           REG4_reg_6_ ( IN SI ) ( OUT Q )
+           REG4_reg_7_ ( IN SI ) ( OUT Q )
+           RLAST_reg_0_ ( IN SI ) ( OUT Q )
+           RLAST_reg_1_ ( IN SI ) ( OUT Q )
+           RLAST_reg_2_ ( IN SI ) ( OUT Q )
+           RLAST_reg_3_ ( IN SI ) ( OUT Q )
+           RLAST_reg_4_ ( IN SI ) ( OUT Q )
+           RLAST_reg_5_ ( IN SI ) ( OUT Q )
+           RLAST_reg_6_ ( IN SI ) ( OUT Q )
+           RLAST_reg_7_ ( IN SI ) ( OUT Q )
+           RMAX_reg_0_ ( IN SI ) ( OUT Q )
+           RMAX_reg_1_ ( IN SI ) ( OUT Q )
+           RMAX_reg_2_ ( IN SI ) ( OUT Q )
+           RMAX_reg_3_ ( IN SI ) ( OUT Q )
+           RMAX_reg_4_ ( IN SI ) ( OUT Q )
+           RMAX_reg_5_ ( IN SI ) ( OUT Q )
+           RMAX_reg_6_ ( IN SI ) ( OUT Q )
+           RMAX_reg_7_ ( IN SI ) ( OUT Q )
+           RMIN_reg_0_ ( IN SI ) ( OUT Q )
+           RMIN_reg_1_ ( IN SI ) ( OUT Q )
+           RMIN_reg_2_ ( IN SI ) ( OUT Q )
+           RMIN_reg_3_ ( IN SI ) ( OUT Q )
+           RMIN_reg_4_ ( IN SI ) ( OUT Q )
+           RMIN_reg_5_ ( IN SI ) ( OUT Q )
+           RMIN_reg_6_ ( IN SI ) ( OUT Q )
+           RMIN_reg_7_ ( IN SI ) ( OUT Q )
+           stato_reg_0_ ( IN SI ) ( OUT Q )
+           stato_reg_1_ ( IN SI ) ( OUT Q )
++ PARTITION CLOCK_45_45
++ STOP PIN test_so2 ;
+
+END SCANCHAINS
+
+END DESIGN

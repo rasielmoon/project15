@@ -23,8 +23,11 @@ def find_out(file1,file2,chain,period):
 				flg = 1
 
 	
-	z = file1[4:-4]	
-
+#	z = file1[4:-4]	
+	hoge = re.split(r'/|\.', file1)
+	z = hoge[-2]
+#	print (hoge[-2])
+	
 	f_write = open(file2,'w')
 	f_write.write('set RTL "' + file1 + '"\n')	
 	f_write.write('set TOP "' + z  + '"\n')		

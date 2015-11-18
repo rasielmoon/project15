@@ -1,0 +1,68 @@
+ 
+****************************************
+Report : DFT signals
+Design : b04
+Version: F-2011.09-SP3
+Date   : Tue Nov 17 16:12:15 2015
+****************************************
+
+========================================
+TEST MODE: all_dft
+VIEW     : Specification
+========================================
+No DFT signals defined in this mode.
+
+========================================
+TEST MODE: Internal_scan
+VIEW     : Specification
+========================================
+No DFT signals defined in this mode.
+
+========================================
+TEST MODE: Mission_mode
+VIEW     : Specification
+========================================
+No DFT signals defined in this mode.
+
+ 
+****************************************
+Report : DFT signals
+Design : b04
+Version: F-2011.09-SP3
+Date   : Tue Nov 17 16:12:15 2015
+****************************************
+
+========================================
+TEST MODE: all_dft
+VIEW     : Existing DFT
+========================================
+Port               SignalType          Active    Hookup    Timing    Usage
+----------         ----------          ------    ------    ------    -----
+RESET              Reset               1         -         P 100.0 R 45.0 F 55.0
+CLOCK              ScanMasterClock     1         -         P 100.0 R 45.0 F 55.0
+CLOCK              MasterClock         1         -         P 100.0 R 45.0 F 55.0
+========================================
+TEST MODE: Internal_scan
+VIEW     : Existing DFT
+========================================
+Port               SignalType          Active    Hookup    Timing    Usage
+----------         ----------          ------    ------    ------    -----
+RESET              Reset               1         -         P 100.0 R 45.0 F 55.0
+CLOCK              ScanMasterClock     1         -         P 100.0 R 45.0 F 55.0
+CLOCK              MasterClock         1         -         P 100.0 R 45.0 F 55.0
+test_so2           ScanDataOut         -         -
+test_so1           ScanDataOut         -         -
+test_si2           ScanDataIn          -         -
+test_si1           ScanDataIn          -         -
+test_se            ScanEnable          1         -
+========================================
+TEST MODE: Mission_mode
+VIEW     : Existing DFT
+========================================
+Port               SignalType          Active    Hookup    Timing    Usage
+----------         ----------          ------    ------    ------    -----
+RESET              Reset               1         -         P 100.0 R 45.0 F 55.0
+CLOCK              ScanMasterClock     1         -         P 100.0 R 45.0 F 55.0
+CLOCK              MasterClock         1         -         P 100.0 R 45.0 F 55.0
+
+1
