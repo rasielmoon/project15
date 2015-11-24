@@ -22,3 +22,8 @@ python3 src/enter.py  -i "${filepass}" -c "${chain}"
 
 #x_fillファイル生成 my_fill
 python3 src/X_fill.py  -i "${filepass}" -c "${chain}"
+
+#遷移確率のカウント等
+python3 src/count.py  -i "${filepass}" -c "${chain}"
+
+

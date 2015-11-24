@@ -1,67 +1,57 @@
 // Verilog STILDPV testbench written by  TetraMAX (TM)  C-2009.06-i090521_205411 
-// Date: Tue Nov 24 16:21:41 2015
-// Module tested: b04
+// Date: Tue Nov 24 16:57:57 2015
+// Module tested: b12
 
 `timescale 1 ns / 1 ns
 
-module b04_test;
+module b12_test;
    integer verbose;         // message verbosity level
    integer report_interval; // pattern reporting intervals
    integer diagnostic_msg;  // format miscompares for TetraMAX diagnostics
-   parameter NINPUTS = 16, NOUTPUTS = 10;
+   parameter NINPUTS = 10, NOUTPUTS = 8;
    // The next two variables hold the current value of the TetraMAX pattern number
    // and vector number, while the simulation is progressing. $monitor or $display these
    // variables, or add them to waveform views, to see these values change with time
    integer pattern_number;
    integer vector_number;
 
-   wire RESTART;  reg RESTART_REG ;
-   wire AVERAGE;  reg AVERAGE_REG ;
-   wire ENABLE;  reg ENABLE_REG ;
-   wire RESET;  reg RESET_REG ;
-   wire CLOCK;  reg CLOCK_REG ;
+   wire clock;  reg clock_REG ;
+   wire reset;  reg reset_REG ;
+   wire start;  reg start_REG ;
+   wire nloss;
+   wire speaker;
    wire test_si1;  reg test_si1_REG ;
    wire test_so1;
    wire test_si2;  reg test_si2_REG ;
    wire test_so2;
    wire test_se;  reg test_se_REG ;
-   wire [7:0] DATA_IN;
-//   reg [7:0] DATA_IN_REG;
-   reg \DATA_IN_REG[0] ;
-   reg \DATA_IN_REG[1] ;
-   reg \DATA_IN_REG[2] ;
-   reg \DATA_IN_REG[3] ;
-   reg \DATA_IN_REG[4] ;
-   reg \DATA_IN_REG[5] ;
-   reg \DATA_IN_REG[6] ;
-   reg \DATA_IN_REG[7] ;
-   wire [7:0] DATA_OUT;
+   wire [3:0] k;
+//   reg [3:0] k_REG;
+   reg \k_REG[0] ;
+   reg \k_REG[1] ;
+   reg \k_REG[2] ;
+   reg \k_REG[3] ;
+   wire [3:0] nl;
 
    // map register to wire for DUT inputs and bidis
-   assign RESTART = RESTART_REG ;
-   assign AVERAGE = AVERAGE_REG ;
-   assign ENABLE = ENABLE_REG ;
-   assign DATA_IN = { \DATA_IN_REG[7] , \DATA_IN_REG[6] , \DATA_IN_REG[5] , \DATA_IN_REG[4]
-          , \DATA_IN_REG[3] , \DATA_IN_REG[2] , \DATA_IN_REG[1] , \DATA_IN_REG[0]
-           };
-   assign RESET = RESET_REG ;
-   assign CLOCK = CLOCK_REG ;
+   assign clock = clock_REG ;
+   assign reset = reset_REG ;
+   assign start = start_REG ;
+   assign k = { \k_REG[3] , \k_REG[2] , \k_REG[1] , \k_REG[0]  };
    assign test_si1 = test_si1_REG ;
    assign test_si2 = test_si2_REG ;
    assign test_se = test_se_REG ;
 
    // instantiate the design into the testbench
-   b04 dut (
-      .RESTART(RESTART),
-      .AVERAGE(AVERAGE),
-      .ENABLE(ENABLE),
-      .DATA_IN({ DATA_IN[7], DATA_IN[6], DATA_IN[5], DATA_IN[4],
-          DATA_IN[3], DATA_IN[2], DATA_IN[1], DATA_IN[0] }),
-      .DATA_OUT({ DATA_OUT[7], DATA_OUT[6],
-          DATA_OUT[5], DATA_OUT[4], DATA_OUT[3], DATA_OUT[2], DATA_OUT[1], DATA_OUT[0]
-          }),
-      .RESET(RESET),
-      .CLOCK(CLOCK),
+   b12 dut (
+      .clock(clock),
+      .reset(reset),
+      .start(start),
+      .k({ k[3], k[2], k[1], k[0] }),
+      .nloss(nloss),
+      .nl({ nl[3], nl[2], nl[1],
+          nl[0] }),
+      .speaker(speaker),
       .test_si1(test_si1),
       .test_so1(test_so1),
       .test_si2(test_si2),
@@ -158,7 +148,7 @@ module b04_test;
       else if (verbose>0) $STILDPV_trace(0,0,1,0,1,report_interval,diagnostic_msg); // verbose=1; + trace proc/macro entries
       else                $STILDPV_trace(0,0,0,0,0,report_interval,diagnostic_msg); // verbose=0; only pattern-interval
 
-      $STILDPV_setup( "./tmax_output/b04_scan2_tdf_loc.stil",,,"b04_test.dut" );
+      $STILDPV_setup( "./tmax_output/b12_scan2_tdf_loc.stil",,,"b12_test.dut" );
       while ( !$STILDPV_done()) #($STILDPV_run( pattern_number, vector_number ));
       $display("Time %t: STIL simulation data completed.",$time);
       $finish; // comment this out if you terminate the simulation from other activities

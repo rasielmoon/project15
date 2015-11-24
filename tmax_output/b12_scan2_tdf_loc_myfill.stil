@@ -1,0 +1,4234 @@
+STIL 1.0 { Design 2005; }
+Header {
+   Title "  TetraMAX (TM)  C-2009.06-i090521_205411 STIL output";
+   Date "Tue Nov 24 16:57:57 2015";
+   Source "Minimal STIL for design `b12'";
+   History {
+      Ann {*  Tue Nov 24 16:57:54 2015  *}
+      Ann {*  DFT Compiler F-2011.09-SP3  *}
+      Ann {*   Uncollapsed Transition Fault Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* fault class                     code   #faults *}
+      Ann {* ------------------------------  ----  --------- *}
+      Ann {* Detected                         DT       3949 *}
+      Ann {*   detected_by_simulation         DS      (3457) *}
+      Ann {*   detected_by_implication        DI       (492) *}
+      Ann {* Possibly detected                PT          0 *}
+      Ann {* Undetectable                     UD          5 *}
+      Ann {*   undetectable-redundant         UR         (5) *}
+      Ann {* ATPG untestable                  AU        612 *}
+      Ann {*   atpg_untestable-not_detected   AN       (612) *}
+      Ann {* Not detected                     ND         82 *}
+      Ann {*   not-observed                   NO        (82) *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* total faults                              4648 *}
+      Ann {* test coverage                            85.05% *}
+      Ann {* fault coverage                           84.96% *}
+      Ann {* ATPG effectiveness                       98.24% *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {*            Pattern Summary Report *}
+      Ann {* ----------------------------------------------- *}
+      Ann {* #internal patterns                         303 *}
+      Ann {*     #fast_sequential patterns              303 *}
+      Ann {* ----------------------------------------------- *}
+      Ann {*  *}
+      Ann {* rule  severity  #fails  description *}
+      Ann {* ----  --------  ------  --------------------------------- *}
+      Ann {* B10   warning       14  unconnected module internal net *}
+      Ann {* V14   warning        1  missing state *}
+      Ann {*  *}
+      Ann {* clock_name        off  usage *}
+      Ann {* ----------------  ---  -------------------------- *}
+      Ann {* clock              0   master shift  *}
+      Ann {* reset              0    *}
+      Ann {*  *}
+      Ann {* port_name         constraint_value *}
+      Ann {* ----------------  --------------- *}
+      Ann {* reset               0 *}
+      Ann {* test_se             0 *}
+      Ann {*  *}
+      Ann {* There are no equivalent pins *}
+      Ann {* There are no net connections *}
+      Ann {* Unified STIL Flow *}
+      Ann {* serial_flag = 1 *}
+   }
+}
+Signals {
+   "clock" In;
+      "reset" In;
+      "start" In;
+      "k[3]" In;
+      "k[2]" In;
+      "k[1]" In;
+      "k[0]" In;
+   "test_si1" In { ScanIn; } "test_si2" In { ScanIn; } "test_se" In;
+      "nloss" Out;
+   "nl[3]" Out;
+      "nl[2]" Out;
+      "nl[1]" Out;
+      "nl[0]" Out;
+      "speaker" Out;
+      "test_so1" Out
+   { ScanOut; } "test_so2" Out { ScanOut; }
+}
+SignalGroups {
+   "_pi" = '"clock" + "k[0]" + "k[1]" + "k[2]" + "k[3]" + "reset" + "start" +
+   "test_si1" + "test_si2" + "test_se"'; // #signals=10
+   "_in" = '"clock" + "reset" + "start" + "k[3]" + "k[2]" + "k[1]" + "k[0]" +
+   "test_si1" + "test_si2" + "test_se"'; // #signals=10
+   "all_inputs" = '"clock" + "k[0]" + "k[1]" + "k[2]" + "k[3]" + "reset" +
+   "start" + "test_si1" + "test_si2" + "test_se"'; // #signals=10
+   "_po" = '"nl[0]" + "nl[1]" + "nl[2]" + "nl[3]" + "nloss" + "speaker" +
+   "test_so1" + "test_so2"'; // #signals=8
+   "_si" = '"test_si1" + "test_si2"' { ScanIn; } // #signals=2
+   "all_outputs" = '"nl[0]" + "nl[1]" + "nl[2]" + "nl[3]" + "nloss" + "speaker" +
+   "test_so1" + "test_so2"'; // #signals=8
+   "all_ports" = '"all_inputs" + "all_outputs"'; // #signals=18
+   "_clk" = '"clock" + "reset"'; // #signals=2
+   "_so" = '"test_so1" + "test_so2"' { ScanOut; } // #signals=2
+   "_out" = '"nloss" + "nl[3]" + "nl[2]" + "nl[1]" + "nl[0]" + "speaker" +
+   "test_so1" + "test_so2"'; // #signals=8
+}
+Timing {
+   WaveformTable "_allclock_launch_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "clock" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "reset" { P { '0ns' D; '45ns' U; '55ns' D; } }
+      }
+   }
+   WaveformTable "_multiclock_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "clock" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "reset" { P { '0ns' D; '45ns' U; '55ns' D; } }
+      }
+   }
+   WaveformTable "_allclock_launch_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "clock" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "reset" { P { '0ns' D; '45ns' U; '55ns' D; } }
+      }
+   }
+   WaveformTable "_allclock_capture_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "clock" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "reset" { P { '0ns' D; '45ns' U; '55ns' D; } }
+      }
+   }
+   WaveformTable "_default_WFT_" {
+      Period '100ns';
+      Waveforms {
+         "all_inputs" { 0 { '0ns' D; } }
+         "all_inputs" { 1 { '0ns' U; } }
+         "all_inputs" { Z { '0ns' Z; } }
+         "all_inputs" { N { '0ns' N; } }
+         "all_outputs" { X { '0ns' X; '40ns' X; } }
+         "all_outputs" { H { '0ns' X; '40ns' H; } }
+         "all_outputs" { L { '0ns' X; '40ns' L; } }
+         "all_outputs" { T { '0ns' X; '40ns' T; } }
+         "clock" { P { '0ns' D; '45ns' U; '55ns' D; } }
+         "reset" { P { '0ns' D; '45ns' U; '55ns' D; } }
+      }
+   }
+}
+ScanStructures {
+   ScanChain "1" {
+      ScanLength 61;
+      ScanIn "test_si1";
+      ScanOut "test_so1";
+      ScanInversion 0;
+      ScanCells "b12.address_reg_0_.SI" "b12.address_reg_1_.SI" "b12.address_reg_2_.SI" 
+      "b12.address_reg_3_.SI" "b12.address_reg_4_.SI" "b12.count_reg2_0_.SI" "b12.count_reg2_1_.SI" 
+      "b12.count_reg2_2_.SI" "b12.count_reg2_3_.SI" "b12.count_reg2_4_.SI" "b12.count_reg2_5_.SI" 
+      "b12.count_reg_0_.SI" "b12.count_reg_1_.SI" "b12.counter_reg_0_.SI" "b12.counter_reg_1_.SI" 
+      "b12.counter_reg_2_.SI" "b12.data_in_reg_0_.SI" "b12.data_in_reg_1_.SI" 
+      "b12.data_out_reg_0_.SI" "b12.data_out_reg_1_.SI" "b12.gamma_reg_0_.SI" "b12.gamma_reg_1_.SI" 
+      "b12.gamma_reg_2_.SI" "b12.gamma_reg_3_.SI" "b12.gamma_reg_4_.SI" "b12.ind_reg_0_.SI" 
+      "b12.ind_reg_1_.SI" "b12.max_reg_0_.SI" "b12.max_reg_1_.SI" "b12.max_reg_2_.SI" 
+      "b12.max_reg_3_.SI" "b12.max_reg_4_.SI" "b12.memory_reg_0__0_.SI" "b12.memory_reg_0__1_.SI" 
+      "b12.memory_reg_1__0_.SI" "b12.memory_reg_1__1_.SI" "b12.memory_reg_2__0_.SI" 
+      "b12.memory_reg_2__1_.SI" "b12.memory_reg_3__0_.SI" "b12.memory_reg_3__1_.SI" 
+      "b12.memory_reg_4__0_.SI" "b12.memory_reg_4__1_.SI" "b12.memory_reg_5__0_.SI" 
+      "b12.memory_reg_5__1_.SI" "b12.memory_reg_6__0_.SI" "b12.memory_reg_6__1_.SI" 
+      "b12.memory_reg_7__0_.SI" "b12.memory_reg_7__1_.SI" "b12.memory_reg_8__0_.SI" 
+      "b12.memory_reg_8__1_.SI" "b12.memory_reg_9__0_.SI" "b12.memory_reg_9__1_.SI" 
+      "b12.memory_reg_10__0_.SI" "b12.memory_reg_10__1_.SI" "b12.memory_reg_11__0_.SI" 
+      "b12.memory_reg_11__1_.SI" "b12.memory_reg_12__0_.SI" "b12.memory_reg_12__1_.SI" 
+      "b12.memory_reg_13__0_.SI" "b12.memory_reg_13__1_.SI" "b12.memory_reg_14__0_.SI" ;
+      ScanMasterClock "clock" ;
+   }
+   ScanChain "2" {
+      ScanLength 60;
+      ScanIn "test_si2";
+      ScanOut "test_so2";
+      ScanInversion 0;
+      ScanCells "b12.memory_reg_14__1_.SI" "b12.memory_reg_15__0_.SI" "b12.memory_reg_15__1_.SI" 
+      "b12.memory_reg_16__0_.SI" "b12.memory_reg_16__1_.SI" "b12.memory_reg_17__0_.SI" 
+      "b12.memory_reg_17__1_.SI" "b12.memory_reg_18__0_.SI" "b12.memory_reg_18__1_.SI" 
+      "b12.memory_reg_19__0_.SI" "b12.memory_reg_19__1_.SI" "b12.memory_reg_20__0_.SI" 
+      "b12.memory_reg_20__1_.SI" "b12.memory_reg_21__0_.SI" "b12.memory_reg_21__1_.SI" 
+      "b12.memory_reg_22__0_.SI" "b12.memory_reg_22__1_.SI" "b12.memory_reg_23__0_.SI" 
+      "b12.memory_reg_23__1_.SI" "b12.memory_reg_24__0_.SI" "b12.memory_reg_24__1_.SI" 
+      "b12.memory_reg_25__0_.SI" "b12.memory_reg_25__1_.SI" "b12.memory_reg_26__0_.SI" 
+      "b12.memory_reg_26__1_.SI" "b12.memory_reg_27__0_.SI" "b12.memory_reg_27__1_.SI" 
+      "b12.memory_reg_28__0_.SI" "b12.memory_reg_28__1_.SI" "b12.memory_reg_29__0_.SI" 
+      "b12.memory_reg_29__1_.SI" "b12.memory_reg_30__0_.SI" "b12.memory_reg_30__1_.SI" 
+      "b12.memory_reg_31__0_.SI" "b12.memory_reg_31__1_.SI" "b12.nl_reg_0_.SI" "b12.nl_reg_1_.SI" 
+      "b12.nl_reg_2_.SI" "b12.nl_reg_3_.SI" "b12.nloss_reg.SI" "b12.num_reg_0_.SI" 
+      "b12.num_reg_1_.SI" "b12.play_reg.SI" "b12.s_reg.SI" "b12.scan_reg_0_.SI" 
+      "b12.scan_reg_1_.SI" "b12.scan_reg_2_.SI" "b12.scan_reg_3_.SI" "b12.scan_reg_4_.SI" 
+      "b12.sound_reg_0_.SI" "b12.sound_reg_1_.SI" "b12.sound_reg_2_.SI" "b12.speaker_reg.SI" 
+      "b12.timebase_reg_0_.SI" "b12.timebase_reg_1_.SI" "b12.timebase_reg_2_.SI" 
+      "b12.timebase_reg_3_.SI" "b12.timebase_reg_4_.SI" "b12.timebase_reg_5_.SI" "b12.wr_reg.SI" ;
+      ScanMasterClock "clock" ;
+   }
+}
+PatternBurst "_burst_" {
+   PatList { "_pattern_" {
+   }
+}}
+PatternExec {
+   PatternBurst "_burst_";
+}
+Procedures {
+   "multiclock_capture" {
+      W "_multiclock_capture_WFT_";
+      F { "reset"=0;
+      "test_se"=0; }
+      C { "all_inputs"=0NNNN0NNNN;
+      "all_outputs"=\r8 X ; }
+      V { "_pi"=\r10 # ;
+      "_po"=\r8 # ; }
+   }
+   "allclock_capture" {
+      W "_allclock_capture_WFT_";
+      F { "reset"=0;
+      "test_se"=0; }
+      C { "all_inputs"=0NNNN0NNNN;
+      "all_outputs"=\r8 X ; }
+      V { "_pi"=\r10 # ;
+      "_po"=\r8 # ; }
+   }
+   "allclock_launch" {
+      W "_allclock_launch_WFT_";
+      F { "reset"=0;
+      "test_se"=0; }
+      C { "all_inputs"=0NNNN0NNNN;
+      "all_outputs"=\r8 X ; }
+      V { "_pi"=\r10 # ;
+      "_po"=\r8 # ; }
+   }
+   "allclock_launch_capture" {
+      W "_allclock_launch_capture_WFT_";
+      F { "reset"=0;
+      "test_se"=0; }
+      C { "all_inputs"=0NNNN0NNNN;
+      "all_outputs"=\r8 X ; }
+      V { "_pi"=\r10 # ;
+      "_po"=\r8 # ; }
+   }
+   "load_unload" {
+      W "_default_WFT_";
+      C { "all_inputs"=0NNNN0NNNN;
+      "all_outputs"=\r8 X ; }
+      "Internal_scan_pre_shift": V { "test_se"=1; }
+      Shift {          W "_default_WFT_";
+         V { "_clk"=P0;
+      "_si"=##;
+      "_so"=##; }
+      }
+   }
+}
+MacroDefs {
+   "test_setup" {
+      W "_default_WFT_";
+      C { "all_inputs"=\r10 N ;
+      "all_outputs"=\r8 X ; }
+      V { "clock"=0;
+      "reset"=0; }
+      V { "test_se"=0; }
+   }
+}
+Pattern "_pattern_" {
+   W "_multiclock_capture_WFT_";
+   "precondition all Signals": C { "_pi"=\r10 0 ;
+      "_po"=\r8 X ; }
+   Macro "test_setup";
+   Ann {* fast_sequential *}
+   "pattern 0": Call "load_unload" { 
+      "test_si1=0000000000000000000000000000000000000101011001011110000111010; 
+      "test_si2=111111110000000000000000111111111111100000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000100110; }
+   Call "allclock_launch" { 
+      "_pi"=P000100110; }
+   Call "allclock_capture" { 
+      "_pi"=P000100110;
+      "_po"=XLLLXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 1": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHLLLLLLLLHXHXHXHHXHHLHL; 
+      "test_so2"=HXHXHHXLLHHXXXXXLHXHXHLLXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111100101011111001111111110001; 
+      "test_si2=100000010111111111000000000000000000000000000000000000011111; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XLXXHHXH; }
+   Ann {* fast_sequential *}
+   "pattern 2": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHHHHHHHHLLLLHLLLLLLHLLLH; 
+      "test_so2"=HLLLLLLLLLHXXXXXLHLHHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXX; 
+      "test_si1=1111111111111111111111111111111111111000011111111011100111111; 
+      "test_si2=111111111011111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=XXXXXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 3": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXXXLLHLLXXLHHHXXXXX; 
+      "test_so2"=XXXXXXXLHLHXXXXXLHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001010100110100011110111; 
+      "test_si2=111111100101111111000000000000000000000000111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LXXLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 4": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLHLHLHLHHHHXHXHHHLHHH; 
+      "test_so2"=HHXHXHHXLLHXXXXXXHHHXLXHLXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001100111010100000101100000010010; 
+      "test_si2=100000000010001111111111111111111111111111111111111110000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 5": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLHXXHLLHLXLXLHLLXHLLLLLLLHHLH; 
+      "test_so2"=HXXXXXXXLLHXXLXHXHXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000000011000000010000000010111; 
+      "test_si2=100000010100010111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXHXH; }
+   Ann {* fast_sequential *}
+   "pattern 6": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXLLLHHLXLXLLLXLLLLLLLHLHHH; 
+      "test_so2"=HLLLLLLLLHLXLHHLXLXLXLLLLXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000000110100000111000000001111; 
+      "test_si2=011111000011100001001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXL; }
+   Ann {* fast_sequential *}
+   "pattern 7": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLHXXLLLHHXXHHLLLLLLLLLLLHHLLH; 
+      "test_so2"=HHHHHLHHLLHLLLLLHHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000010000000000011001; 
+      "test_si2=100000000001011111111111111000000000000111000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 8": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHLLHLHLXXHLLLLHHLHHH; 
+      "test_so2"=HXXXXXXXLLLHLHHHXHXXXXXXXXHXXXXXXXXXXLHXXLHXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000111110000000000000001111111000100010101111111110001; 
+      "test_si2=100000000000000001111111111111111111111111100000000000011100; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 9": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXLHXXXHXXXXXXXXXXXXXXLHHHHXXHLLHHHLLHLLLXXXXXXXXLHHHH; 
+      "test_so2"=HXXXXXXHLLLXXXXXHHXXXXXXXXHXXXXXXXXXXXXXXXHXXXXXXXXXXLHXXLHX; 
+      "test_si1=1111111111011111111111111110001001000001000000010000000000110; 
+      "test_si2=011111111011111101111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHH; }
+   Ann {* fast_sequential *}
+   "pattern 10": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXHHXXXXXHXXXXXXXXXHXXLHLLHXXLLHLLHLHHLLLXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXHHLHLLLLLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000100000000001011100101000000000000; 
+      "test_si2=100000000001111111010000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 11": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXLHLLLLLXXLLHLLHLLHLLLLLXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXLLLLLLLLXHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000000001000010101111111110101; 
+      "test_si2=100000000001000001111111111111100000000000000001111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 12": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLXXLLHLLLLHHLLLXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXHLLLLLLLLHHXXXXXXXXXXXHHXXXXXXXXHHXXXXLHXXXXXXXXHXXXX; 
+      "test_si1=1111111111111111111111111111111111111111111101111111111110000; 
+      "test_si2=100000000000000000000000000000000000000000000000000000001111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 13": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLHLHLLLLXXXXXXXXHLLLL; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXX; 
+      "test_si1=1111111110000111111111111111001000000001000001000000000000010; 
+      "test_si2=100000000010000001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXHXH; }
+   Ann {* fast_sequential *}
+   "pattern 14": Call "load_unload" { 
+      "test_so1"=XXXXXXXHHXXHHXXXXXXXXXXLLXXHXLHLLLXXLLHLLLLHHLLHXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXHLLHLLLLLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111100000000000000000111111000111110000000000000001; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 15": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXHHXXXXXXXXXXHHXXLLHHHXXHLLHHHLHHXXXXXXXXXXXLLHHH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111111010100000010000000011111; 
+      "test_si2=000000000101111111000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 16": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLXXHLLHLXXXXLHHXXLLLLLLXHLLL; 
+      "test_so2"=XXXXXXXXLHLXHXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000100100000110000000010111; 
+      "test_si2=000000000010000001000111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 17": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLLHXXXXLLLXXLLLLLLHLHHH; 
+      "test_so2"=XXXXXXXHLLHXXXXXHHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001100000100000111000000; 
+      "test_si2=111000000010000001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 18": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXXXXLLLXXHLHHHHXXXXX; 
+      "test_so2"=XHHLLLLHLLLXXXXXHHXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110010111010100000010000000010110; 
+      "test_si2=100000000001001001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 19": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHLXXHLHHLLLLLLLLXXLLLHHHHLHHL; 
+      "test_so2"=HXXXXXXHHLHHLLHLHHXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000111111110000000000010110; 
+      "test_si2=100000000000000000000000000000000000000000000111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=LLLLLXXH; }
+   Ann {* fast_sequential *}
+   "pattern 20": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLLHHHHHLLLXXLLLLLLHLHHL; 
+      "test_so2"=HLLLLLLLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110101000011111111100000000011111; 
+      "test_si2=000000000111010111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 21": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXLHLLHXXXXLLHXXHLLLLHLLLLL; 
+      "test_so2"=LXXXXXXXLHHLLLLLXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000110111110111100000000000; 
+      "test_si2=000000111000000011110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 22": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLHXXLLLHHXXXLHLHXHLLLLLLLLLLH; 
+      "test_so2"=HLLLLLLXHLLLLLLLXHXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000011001111111111100; 
+      "test_si2=100000000101110011111111111111110000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 23": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLLHLHLLLXXHLLLLHHHHLL; 
+      "test_so2"=HXXXXXXXLHLHHHLLXHXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111100000000100000000000000001111111100000000001111; 
+      "test_si2=111111111000001101000000000000000000000000000000000000000001; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 24": Call "load_unload" { 
+      "test_so1"=XXXXXHXXXXXXXHLXXXXXXLHXXXXXXXXXXXXXLLHLHLHXXLLLXXXXXXXXLLLHH; 
+      "test_so2"=LXXXXXXHHLLLLLHHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100111010000000111110000; 
+      "test_si2=111111111000000000000000000000000000000000000000000000110000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000100110; }
+   Call "allclock_launch" { 
+      "_pi"=P000100110; }
+   Call "allclock_capture" { 
+      "_pi"=P000100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 25": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHHLLHLHLLLXXXHXHHXHLLLL; 
+      "test_so2"=HXHXHHXLLHHXXXLXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXLXLXLHXXX; 
+      "test_si1=1111111111111110000000000000000111111000100000000000000000111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 26": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLLXXXXXXXXXXXXXXLLHHHXXHLLHHLLLLXXXXXXXXXXXLLHHH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111101111000100000000000000000000; 
+      "test_si2=111111111111111111111111111111111000000011111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 27": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLHXXHLLHHHHXLXXXXXXXXXXXHHHLH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXHXXLXXXLXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000010101010001000000011110101; 
+      "test_si2=111100000110000001000000011111111111111111111110000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=LXLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 28": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHLLLLLLLLLXXXXHXXXHLHLH; 
+      "test_so2"=HXXHXXXHLHLXXXXXHHXXXLHXLXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111110101000110001111111110101; 
+      "test_si2=111111111001111111000000000000000000000000000001111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 29": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHHLLHHHHLHLXXXXXXXXHLHLH; 
+      "test_so2"=HXXXXXXXLLLXXXXXXHXXXXXXHXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000000011100000000000000001111; 
+      "test_si2=111111111111001111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 30": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXLLHLLLXLXXXXXXLLLLLLHLHLL; 
+      "test_so2"=LXXXXXXXXXXHLHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXX; 
+      "test_si1=0000000000000000000000000000000000000100011111011111111111100; 
+      "test_si2=100000000111001101111111111111111111111111111111100000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 31": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLLLXHLLLXXHLLLLHHLLHH; 
+      "test_so2"=HXXXXXXHLHHHLLHHHHXXXXXXXXXXXXXXHHHXXXXXXXXXXXXHHXHXXXXXXXXX; 
+      "test_si1=1111000000001000000000000000001000000001000011111111111110100; 
+      "test_si2=100000000111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 32": Call "load_unload" { 
+      "test_so1"=XXXHLXXXXXXHLXXXXXXXXXXXXXXXXLHLLLXXLLHLLLHHLLLHXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXLLHHLLLLLLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000010100000100011111111111; 
+      "test_si2=000000000100000001111111000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HHHHXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 33": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHHXXXXLLLHLLLLLLLXXXXX; 
+      "test_so2"=XLLLLLLHLLLXXXXXHLHLXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000010101111111111111111000000; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XHXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 34": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHHLLXXXXXXXXXXXXXLHXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110111111010000000000000; 
+      "test_si2=000000000111111101111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 35": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXHHLLLXXXXHHHXXLLLHHHLXXXX; 
+      "test_so2"=XXXXXXXLHLLHHHHHLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000011111111111110011; 
+      "test_si2=111111111111110011111111111111110100000001111111010000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 36": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHLLHXXXXXHLLLLHHHHLL; 
+      "test_so2"=HXXXXXXXXXXHHHLLXXXXXXXXXXXXXXXLHHLXXXXXLXXXXXXHLLHXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110110000001011101000000000001111; 
+      "test_si2=000000000010000001011111111111111111111111010111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXHHH; }
+   Ann {* fast_sequential *}
+   "pattern 37": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXXXXXXXXHXXXXXXXXXXXXHLHHLXXLLHLLHLLHLLHXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXHLLHLLLLLHHXXXXXXXXXXXXXXXXXXXXXXXHLLHXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110000000001011111111111111110000; 
+      "test_si2=100000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 38": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXX; 
+      "test_si1=1111111111111000000000000000001010000001000010000000000000000; 
+      "test_si2=011111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 39": Call "load_unload" { 
+      "test_so1"=XXXXXXXHLXXXHXXXXXXXXXXXXXXXXLHLHLXXLLHLLHHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000100000001011110000000000000100; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 40": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXLLXXXXXXXXLLHLLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000000001011111111111111111101; 
+      "test_si2=100000000000000000000000000000011111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 41": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXHHXXXXXXXHLLXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111100000000000001111111111111111110111; 
+      "test_si2=100000000000000100000000000000000000000000000000000000011111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 42": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXHXXXXXXXHXXHLXXXXLXXXXLLHLHHLHHXXXXXXXXXXXLLLLH; 
+      "test_so2"=LXXXXXXXXXXLLLLHXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXXLXXXXX; 
+      "test_si1=1111111111111111111111111111110001000001000001111111111110001; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 43": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLHXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100011110000000000001100; 
+      "test_si2=111111111111101111111111111111110000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 44": Call "load_unload" { 
+      "test_so1"=XXXHHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLLLHHXXXXXHLLLLHHHLHH; 
+      "test_so2"=HXXXXXXXXXXHHLHHXXXXXXXXXXXXXXXHLHHXLXLXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111000000000000000000100000001000000000000110; 
+      "test_si2=100000000001110111111111111110111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 45": Call "load_unload" { 
+      "test_so1"=XXHXXXXXXXXXXXXLLXHXXXXXXXXXXXXXXXXXLHLHLLHLLLLHXXHLLLLHHHHLH; 
+      "test_so2"=HXXXXXXLLLLHHHLHLHXXXXXXXXXHHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111110000000000100011101111111111110001; 
+      "test_si2=100000000000000000000000000000000000000000000000000000111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 46": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXHHHLXXXXXXXLHLHLLLHLXXXXXHLLLLHLLLLL; 
+      "test_so2"=HXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXHXXX; 
+      "test_si1=0000000000000000000000000000000000000010100000110000100010110; 
+      "test_si2=111010011001111111111100011111111111111111111000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HXXHXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 47": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHLXXXXLLLXXXHLLHHHLHHL; 
+      "test_so2"=XXHLHLLXLLLXXXXXXHXXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001011000011011111100000000010111; 
+      "test_si2=111110111010101101000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXHXH; }
+   Ann {* fast_sequential *}
+   "pattern 48": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHHXXLLHHHXHXHLLLXXXXHHLLHLHHH; 
+      "test_so2"=HXXHHLHLHLHLHLHHHLXXXLLLLXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111011000000100000000011111; 
+      "test_si2=000000000000000001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 49": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHHXXXXLLLXXLLLHHHXXXXX; 
+      "test_so2"=XXXXXXXLLLLXXXXXLLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000110000000100000000000000; 
+      "test_si2=110000000001111111000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 50": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXLHHLHXXXXLLLXXLHHHHHXXXXX; 
+      "test_so2"=XHLLLLLLLLLXHXXHHLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111100011111111100111000100011110000000000011; 
+      "test_si2=100000000101111111111111111111110111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 51": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXHLLHXXXXXXHHHLLXXHLLHHHLLHLLHXXLLLLLLHHHLL; 
+      "test_so2"=HXXXXXXLLHLXXXXXLHXXXXXXXXXXXXXLHXHXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111111000111110000000000000111; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 52": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXHHXXXXXXXXXXXXXXLLHHHXXHLLHHHHHHXXXXXLLLLLLLLHHH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110010111000111111111111111110100; 
+      "test_si2=111111111001111111000000000000000000000000000000011100000111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 53": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHLXXHLLHHHLHHLLHXXXXXXXXHLLHL; 
+      "test_so2"=HXXXXXXLHLLXXXXXLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXHHXXXLXXX; 
+      "test_si1=0000000011111111111111111111111111100101111101111111111101010; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXHXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 54": Call "load_unload" { 
+      "test_so1"=XXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHLLHLHLXXXXXXXXXHLLHLHL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111001000000000000001111101111111111110101; 
+      "test_si2=100000000000001000000000000000000000000000000011111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 55": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHXXXHXLHXXXXXXXXXXXLLHLHLHHLXXXXXXXXXXXLLLHL; 
+      "test_so2"=LXXXXXXXXXXLLLHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXHXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001101000101111111110100; 
+      "test_si2=100000001000000001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HHXHXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 56": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHLLLLHLLXXLLLLLLHLHLL; 
+      "test_so2"=HLLLLLLLLLHXXXXXLLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000101000110011100000000000010100; 
+      "test_si2=100000000000010100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 57": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHLXXLLLHLHXHXLLLXXLLLLLLHLHLL; 
+      "test_so2"=HHHHHHHLXXXLLHLHXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXX; 
+      "test_si1=0111110000000000000000000000001110000001000001111111111110011; 
+      "test_si2=100000000000001111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXLH; }
+   Ann {* fast_sequential *}
+   "pattern 58": Call "load_unload" { 
+      "test_so1"=HXXXXHLXLXXXXXXXXXXXXXXXXXXXXLHHHLXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXLLXXXXXXXXH; 
+      "test_si1=0000000000000000001111111000000000000001111100000000000000101; 
+      "test_si2=111111111111001011111111111111111111111111110000000010000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 59": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHLXXXXXHXXXXXXXXXXXLLHLHLHHLXXXXXXXXXXXHLLHL; 
+      "test_so2"=LXXXXXXXXXXHLLHLXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXLHXXXXXXX; 
+      "test_si1=1111111000000000000000000000001011111000111101111111111111100; 
+      "test_si2=100000000000000000000000000000001111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 60": Call "load_unload" { 
+      "test_so1"=XXXXHHLXXXXXXXXXXXXXXXXXXXXXXLHLHHXXHLLHHHHHLXXXXXXXXXXXLHLHH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXHXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000001011110000000000001100; 
+      "test_si2=100000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 61": Call "load_unload" { 
+      "test_so1"=XXXHHXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHX; 
+      "test_si1=0000000000000000000011100000000000000001111100000000000000100; 
+      "test_si2=111111111111101111111111111111111100000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 62": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXHLXHXXXXXXXXXXXXXLLHLHHLHLXXXXXXXXXXXHHLHH; 
+      "test_so2"=LXXXXXXXXXXHHLHHXXXXXXXXXXXXXXXXHHLXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111011111000000000000010110; 
+      "test_si2=000000000000000000000011111111111111111111110111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXHHXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 63": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHLXXXXLLHXXLLLHHHHLHHL; 
+      "test_so2"=XXXXXXXLHLHXXXXXXHXXXHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111110000111000000010000000000000; 
+      "test_si2=111111000000000111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXHXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 64": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXLXHLLLLXXXXLHHXXXXXXHXXXXXX; 
+      "test_so2"=XXXXXHXXLLLXXXLXXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000011010011100000000000011100; 
+      "test_si2=111111100000000011111100000000001000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 65": Call "load_unload" { 
+      "test_so1"=XXXLXXXXXXXXXXXXXXXLXXXXXXXXXLLLLLLXHLHLHHLHLLLLXXXXXXHLHHHLL; 
+      "test_so2"=HXXXXHHLLXXLLLLLXLXXXLLLLXXXXXXHLXXXXXXXXXXXXXXLXXXXXXXXXXXX; 
+      "test_si1=0000000000000001111111111111111111111001011111111111100001111; 
+      "test_si2=100011111110000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 66": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXHLHLLHHHHXXXXXXXLXXXLHHHH; 
+      "test_so2"=HXXLXXXXLLLXXXXXXHXXXXLLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHX; 
+      "test_si1=0000000000000000000000000000000010000110100000000000000000001; 
+      "test_si2=111111111111110100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 67": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHXXXLHLLHXXXXXXXXXHLLLLHXXHHL; 
+      "test_so2"=XXXXXXXXXXXXXHHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110110000110111110000000000010100; 
+      "test_si2=111000011111011011100000000000000000000000000000011111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 68": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHHXXLLLHHHHLHXXXHLLLLLLLHLHHH; 
+      "test_so2"=HXLHHHHXXXXLLLLLXXHLXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111011000001000011111111111111011; 
+      "test_si2=111111111111111111101111111111111101111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 69": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001111111111111111110110; 
+      "test_si2=111111111111001100000000000000000000000000000111111000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 70": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHHHHHXXXXXXXXXXXHLLHH; 
+      "test_so2"=LXXXXXXXXXXHLLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXHHXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000011111111111110000; 
+      "test_si2=111111111111111011111111111101111111111110000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 71": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHLLHXXXXXHLLLLHHHHHL; 
+      "test_so2"=HXXXXXXXXXXHHHHLXXXXXXXXXXXLHXXXXXXXXXXXHXXXXXXXXXXXXXXLHXXX; 
+      "test_si1=0000001111111111111111111111111111111111111100000000000001011; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 72": Call "load_unload" { 
+      "test_so1"=XXXXXHLXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLHLHLLLLXXXXXXXXLHLHH; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000111111111111100000000000001100000001000000000000000000110; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXLH; }
+   Ann {* fast_sequential *}
+   "pattern 73": Call "load_unload" { 
+      "test_so1"=LXXHHXXXXXXXXXXLLXXXXXXXXXXXXLHHLLXXLLHLLLHHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXH; 
+      "test_si1=0000000000000000000000000010000001000001011100000000000000001; 
+      "test_si2=100000000000000000010000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 74": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXLHXXLLLLHXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1000000000000000000000000000000000000001100011111111111111011; 
+      "test_si2=100000000000111000000000000001111101111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHL; }
+   Ann {* fast_sequential *}
+   "pattern 75": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHHHLHXXXXXXXXXXXLHHHL; 
+      "test_so2"=LXXXXXXXXXXLHHHLXXXXXXXXXXXXLXXXXLHXXXXXXXXXXXXXXXXXXXXXXXXH; 
+      "test_si1=1001111111111111111111111111110110000001000010000000000001101; 
+      "test_si2=111111111111111111100000000000000000000000001111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHH; }
+   Ann {* fast_sequential *}
+   "pattern 76": Call "load_unload" { 
+      "test_so1"=HLHXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHLXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHXXXXXXXXXXXXX; 
+      "test_si1=0000000000000001111111111111000000000001100001111111111110000; 
+      "test_si2=100000000000011111111111111111111111111111111111111111110000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 77": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLLXXXXXXXHXXXXHXXXXXXXXLLHLHLLLLXXXXXXXXXXXLLHHH; 
+      "test_so2"=LXXXXXXXXXXLLHHHXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXLLXXX; 
+      "test_si1=0001110000000000000000000000000000000100000010000000000000101; 
+      "test_si2=100000000000101100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 78": Call "load_unload" { 
+      "test_so1"=XXLXXLHXXXXXXXXXXLHXXXXXXXXXXXXXXXXXLHLHLHLLHXXXXXHLLLLHLHLHH; 
+      "test_so2"=HXXXXXXXXXXLHLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000111110000000000000000100011101111111111111100; 
+      "test_si2=100000000000011000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 79": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXHLXXHHXXXXXXXXXXXXXXXLHLHLLHHLXXXXXHLLLLHLLHHL; 
+      "test_so2"=HXXXXXXXXXXLLHHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111100000000000000001111000111101111111111111110; 
+      "test_si2=100000000000000000000000000011111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 80": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXHHXXXXXXXXHLLXLLLLHXXHLLHHLLHLXXXXXXXXXXXLLLLH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000010000011000000000000000010011; 
+      "test_si2=100000000000001011111111111111111111111111111111111000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 81": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHLXXLHLLLLLLLLLLXXLLLLLLHLLHH; 
+      "test_so2"=HLLLLLLLXXXLLLLLXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111011111110100101011111111110000000; 
+      "test_si2=100000000000000000000111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=XXXXLXXH; }
+   Ann {* fast_sequential *}
+   "pattern 82": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXLHXXXXXHLLHLHHLHLHXXXXXLLXLXXLLLLL; 
+      "test_so2"=HLLXLXXXLHLXXXXXXHXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111111111111111111111110011; 
+      "test_si2=100000000000000000000000000000000000000000000000000111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 83": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLHHHHLLLXXXXXXXXHLLHH; 
+      "test_so2"=LHLLLLHLXXXXXLXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001110111000100010000000000001110; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHH; }
+   Ann {* fast_sequential *}
+   "pattern 84": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHLXXHLLHHLHLHXXXXXXXXXXXLHHHL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXL; 
+      "test_si1=0000000000000001111111111110000001111000111111111111111111111; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 85": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXLXXXXXXXXXXXHXXLLLLHXXHLLHHXHXHXXXXXXXXXXXLLLLH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111110111111110000000000011010; 
+      "test_si2=111110000000001111111110000000000000011111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 86": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLLHHHHLLLXXHXHLHHHHLHL; 
+      "test_so2"=HHXHHLLLXXXXXLXXXLXXXLLLLXXXXXXXXXXHHXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000001111111111111111111111111100000000000000101; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 87": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHLXXXXXXXXXXLLLLLXXLLLHLHLHLLLLXXXXXXXXLLHLH; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000101111010101100010000000010010; 
+      "test_si2=100000000100010101000000000000000000000000000000000010000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XHXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 88": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHXXHLHHLHXHXLLLXXLLLHHHHLLHL; 
+      "test_so2"=HXXXXXXHHLHLLHLHHHXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXXXX; 
+      "test_si1=0001111111111111111111111111111101000001000000000000000001110; 
+      "test_si2=100000000000000011111111111110000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXLH; }
+   Ann {* fast_sequential *}
+   "pattern 89": Call "load_unload" { 
+      "test_so1"=LXLXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLHXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXL; 
+      "test_si1=1111111111111111111111111111110010000001011111111111111111100; 
+      "test_si2=000000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 90": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXLLXXXXXXX; 
+      "test_si1=0011111111110000000000000000001101000001000010000000000000000; 
+      "test_si2=011111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 91": Call "load_unload" { 
+      "test_so1"=XHLXXXXXXXHHXXXXXXXXXXXXXXXXXLHHLHXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111100000000000000000000000000100000001111111111110110; 
+      "test_si2=100000000000100111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHH; }
+   Ann {* fast_sequential *}
+   "pattern 92": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHHLLXXXXXHLLLLHLHLLH; 
+      "test_so2"=HXXXXXXXXXXLHLLHXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXX; 
+      "test_si1=1111110111111111111111111111111111111011101010000000000101011; 
+      "test_si2=100000000000000000000000011111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LXLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 93": Call "load_unload" { 
+      "test_so1"=XXXXXLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHLLHLHXXXXXLLHLLLLHLHH; 
+      "test_so2"=HXXXXXXXHLHXXXXXXHXXXLHXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111000111010000000000000000010011; 
+      "test_si2=000000000111100011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 94": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLXXHLHHLXXXXLLLXXLLHLLLHLLHH; 
+      "test_so2"=XLLLLLLLHLHHHLLLXHXXXHLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111110111011111111111111000000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXHXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 95": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHHHXXXXXXXXXXXXXXXXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111100101001000011111111111111; 
+      "test_si2=000000001010000001000000011111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=LXXLXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 96": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHHLLXXXXLHHXXXXXXXXXXXXX; 
+      "test_so2"=XXXXXXXLLLHXXXXXLHXXXLXHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111110101011111111111111110010; 
+      "test_si2=100000000000000000000000000000000000000000000000000001111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XLLXHXXH; }
+   Ann {* fast_sequential *}
+   "pattern 97": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHHHHXHXHXXXXXXXXXXXHLLHL; 
+      "test_so2"=HXXXXXXXLLLXXXXXXHXXHXLLHXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100110111111111111111010; 
+      "test_si2=000000000000000000000111111111111111100000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 98": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHHLXXXXXXXXXXXXXXXHHLHL; 
+      "test_so2"=XXXXXXXXLHLXXXXXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111110000001000011111111111111111; 
+      "test_si2=011111111111111111101111111011111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 99": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHLXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXHHHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111001000001000011111111111111100; 
+      "test_si2=011111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 100": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLHXXLLHLLHHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXHXXXXXXHLXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110011000001011101111111111111010; 
+      "test_si2=100000000000000000010000000000000000111111111111110001111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 101": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHXXLLHLLHXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXLHXLXXXXXXX; 
+      "test_si1=1111111111100000000000000000000000000100000001111111111110001; 
+      "test_si2=100000000000111011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHH; }
+   Ann {* fast_sequential *}
+   "pattern 102": Call "load_unload" { 
+      "test_so1"=LXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHHLLXXXXXHLLLLHLHHHL; 
+      "test_so2"=HXXXXXXXXXXLHHHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXL; 
+      "test_si1=1111111111110000000000000000000000000000100010000000000001000; 
+      "test_si2=101111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 103": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXLHXXXXXXXXXXXXXXXXLLLLLXXLLLHHLHXXLLLXXXXXXXXLLLLL; 
+      "test_so2"=HHLLLLHLXXXLLLLLXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111110100000000000000000100000011111111111111101; 
+      "test_si2=100000000000010000000000000000000111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 104": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHLLHXXXXXXXXXXXXXXXLHLHLHLLHXXXXXHLLLLHLLHLL; 
+      "test_so2"=HXXXXXXXXXXLLHLLXXXXXXXXXXXXXLHXLXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000001111111111111110; 
+      "test_si2=111111111111010111111111111111111111111111111100000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 105": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXLHLHLHLLLXXXXXHLLLLHHLHLH; 
+      "test_so2"=HXXXXXXXXXXHLHLHXXXXXXXXXXXLLXHXXXXXXXXXXXXXHLLXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111001000001011100000011111111001; 
+      "test_si2=100000000000000000000000000000000000001111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 106": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLHXXLLHLLHLLLXXXXLXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXLXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110100000001011111111111111110100; 
+      "test_si2=100000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 107": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXX; 
+      "test_si1=0000000000000111111111111111111000000001000000000000000001111; 
+      "test_si2=111111111111111111111111111000000000000001111111111111111100; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 108": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXLXXXXXXXXXXXXXXXXHHLLLXXLLHLLXLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXHXXXXXXXXXXXXHHXXXXXXXXXXXXXXXXLLX; 
+      "test_si1=1111111111011111111111111111110010000001000010000000000001001; 
+      "test_si2=111111111111111111100000000000000000000000000000000001111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 109": Call "load_unload" { 
+      "test_so1"=XXXXXXXXHLHXXXXXXXXXXXXXXXXXXHLLHLXXLLHLLLLHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHXXXXX; 
+      "test_si1=0000000000000000000000000000000101000001011110000000000000101; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 110": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXLLXXXXXXXXXXLLHLHXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111110000000000000000000000100011100000000000000000; 
+      "test_si2=100000000000111100000000000000000000000000000000000000000011; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 111": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXHXXXXXXXXXXXXHLXXXXXXXLHLHLLHHLXXXXXHLLLLHLHHHH; 
+      "test_so2"=HXXXXXXXXXXLHHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLX; 
+      "test_si1=1111111111111111111111111111111111000111100000000000000011111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 112": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXHLLLLXXXXLLLXXXXXXXLXXXXX; 
+      "test_so2"=XXXXXXHLXXXXXXXXXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111110101000000000000000011111; 
+      "test_si2=100000000000000000000011111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXLHXXH; }
+   Ann {* fast_sequential *}
+   "pattern 113": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLHHHLLHLLXLXXXXXXLLLLLLLLLLL; 
+      "test_so2"=HXXXXXLXXXXXXXXXXXXXHLXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111100011100000000000011111; 
+      "test_si2=100000000000000000000000001111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HHHHXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 114": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLHHLHLLLLXXLLLHHHHHHHH; 
+      "test_so2"=HXXXXXXLXXXXXXXXXLXXXHHHHHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111100000000000000000000100011100000000000000010; 
+      "test_si2=111111111111111000000000000001111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 115": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXHXXXXXXHLXXXXXXXXXXXLHLHLXLHLXXXXXHLLLLHHHHHL; 
+      "test_so2"=HXXXXXXXXXXHHHHLXXXXXXXXXXLHLXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111100000000000010000001000010000000000000100; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 116": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXLHXXHHXXXXLLLHLXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111111111101111111111111011; 
+      "test_si2=100000000000000000000000000000000011111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 117": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLHLHLLLLXXXXXXXXHHLHH; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111110000000000000101000001000000000000000000101; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 118": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHHXXXXXXXXXXLLHLHXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000010111011001111001111110; 
+      "test_si2=100010001000000001111111111100000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXHXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 119": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHLLXLXHHLXXLLLLHHHHHHL; 
+      "test_so2"=HLLLHLLLLHHXXXXXLHXXXHXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110101000001000001111111111111111; 
+      "test_si2=011111111111111111111111111111111111111111100001111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 120": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXHHXXHHXXXXXXXXXXXXX; 
+      "test_si1=1111100000000000000011111000000100000001000010000000000001010; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 121": Call "load_unload" { 
+      "test_so1"=XXXXHXXLHXXXXXXXXXXHLXXHHXXXXLLHLLXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111100000000011000001000011111111111111001; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 122": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXHLXXXXXXLLLHHXXLLHLLHHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111000100000001000000000000000000000; 
+      "test_si2=000000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 123": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXLLXXXXXXHXLLHLLXXLLHLLXHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000001111111111111111001110000100000000000100; 
+      "test_si2=000001000000000001111111100000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HXHXXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 124": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXHLHLLXXXXHLLXXLLLLLHLLHLL; 
+      "test_so2"=XLLLLHLLLHLXXXXXLHXXXXHXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000011011100000000000011110; 
+      "test_si2=101000011111111111111111000010000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 125": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHHHLHLLLLXXLLHHHHHHHHL; 
+      "test_so2"=HLHLLLLLXXXXXXXHXLXXXLLLLXXHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111011110000000000000111011; 
+      "test_si2=000000000000000000000000000000000011111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XLXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 126": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHLXXXXXXXXXLLHLLLHHLHH; 
+      "test_so2"=XXXXXXXXHLHXXXXXXHXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1000000000000000000000000000000000000000111100000000000001110; 
+      "test_si2=111111111111111111111111100000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLLXLL; }
+   Ann {* fast_sequential *}
+   "pattern 127": Call "load_unload" { 
+      "test_so1"=LXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHHHLXXLLLXXXXXXXXLLLLL; 
+      "test_so2"=HHLLLLHLXXXLLLLLXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXH; 
+      "test_si1=0000000000000000000000000000000000000101111111111111111111110; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=HXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 128": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHHLLXHXHXXXXXXXXXXXHHHHL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXHXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111010111000111101111111111111111; 
+      "test_si2=100000000000000000000000001111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 129": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHLXXHLLHHHHHLXXXXXXXXXXXHHLHL; 
+      "test_so2"=HXXXXXXXXXXXXLXXXXXXXXXXXHLXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001100011111111111111010; 
+      "test_si2=111111111111111111111111110000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 130": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHHLLHXXXXXXXXXXXHHHHH; 
+      "test_so2"=LXXXXXXXXXXHHHHHXXXXXXXXXHLXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000001111111111110100; 
+      "test_si2=111111111111110111111111111111111111111111111111100000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 131": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHXLLXXXXXHLLLLHHHHLH; 
+      "test_so2"=HXXXXXXXXXXHHHLHXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXHLLXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110111000001000010000000000001111; 
+      "test_si2=111111111111111111100000000000000000000000100000000000000001; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 132": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHHXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXLHX; 
+      "test_si1=0000000000100000000000000000000000000001111100000000000001001; 
+      "test_si2=111111111111110000000000000000001111110000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 133": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHLHHLXXXXXXXXXXXHHHLL; 
+      "test_so2"=LXXXXXXXXXXHHHLLXXXXXXXXXXXXXXXLHXXXXHXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111011000000011000001011100000000000000010; 
+      "test_si2=000000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 134": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXLHXHXXXXLLLHHXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1100000000000000000000000000001101000001000011111111111111110; 
+      "test_si2=100000000000000111100000000001111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 135": Call "load_unload" { 
+      "test_so1"=XHLXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLHXXLLHLLHXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100011101111111111111001; 
+      "test_si2=111111111111001100000000000000000000000000000000001000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 136": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLLHHLXXXXXHLLLLHHLLHH; 
+      "test_so2"=HXXXXXXXXXXHLLHHXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXHLXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000000111111111111111110010; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 137": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLXXHHXXLLLXXXXXXXXXLLXL; 
+      "test_so2"=XXLLLLXLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXX; 
+      "test_si1=1111000000000000000000000000000000000100000000000000000001100; 
+      "test_si2=111111111111010111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 138": Call "load_unload" { 
+      "test_so1"=XXXLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLXHLLXXXXXHLLLLHHLHLH; 
+      "test_so2"=HXXXXXXXXXXHLHLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111000001011100000000000000111; 
+      "test_si2=100000000000000000010000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 139": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLHXXXXXXXXXXXXXXLLHHHXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000001111111111111111000000001011000001000000000000000000011; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 140": Call "load_unload" { 
+      "test_so1"=XXXXXHHXXXXXXXXXXXXXXLLXXXXXXLHLHHXXLLHLLLXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000111100001111111110011101; 
+      "test_si2=111111111111111111111111111111100000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 141": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHHLLLLXXXXXXXXLHLHHHLH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000001111111111111111111000001000010000000000000111; 
+      "test_si2=111111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 142": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLHXXXXXXXXXXXXXXHHHHHXXLLHLLLXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110000000000000000011111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 143": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXLHHLHXXXXLLLXXXXXXXXXXXXX; 
+      "test_so2"=XXXXHXXLXXXHHHHHXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110010000011100000000000000111111; 
+      "test_si2=111111111111001011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 144": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHLXXLHLLLXXXXXXXXXLLLLLLXXXXX; 
+      "test_so2"=XXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111100100110111111111111111010; 
+      "test_si2=111111000000000000000000000000000000111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 145": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHHXXXXXXXXXXXXXHXHHLHL; 
+      "test_so2"=XXXXXHXXLLHXXXXXXHXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100111111111111111000011; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XXXXLXXH; }
+   Ann {* fast_sequential *}
+   "pattern 146": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXLXXXXHHLLXXXXXXXXXLHLHHHLHHHHXXXXXXXXXXXLLLHH; 
+      "test_so2"=HXXXXXXXLLHXXXXXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110000000001000011111111111111111; 
+      "test_si2=111111111111111111101111111111111111111110000000000000001111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 147": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXLHXXXXXXXXXXXXXHXXXXXXXXXXXXXXHLXXX; 
+      "test_si1=0000000000000011111000000000000111111000111100000000000001101; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 148": Call "load_unload" { 
+      "test_so1"=XHLXXXXXXXXXXHLXXXHXXXXXXXXXXLLHHHXXHLLHHLHHLXXXXXXXXXXXLLHHH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111100000001011101111111111111011; 
+      "test_si2=100000000000000000010000000000001111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 149": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLLXXLLHLLLXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXLHHLXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000111111111111111111111011111100110000000000110; 
+      "test_si2=100000000110000001000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 150": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXHLHHLHLHLLLLXXLLLHHHLLHHL; 
+      "test_so2"=HXXXXXXHHLHXXXXXHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111100000000000000000000001010000001011101111111111110110; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 151": Call "load_unload" { 
+      "test_so1"=XXXXXXXLHXXXXXXXXXXXXXXXXXXXXLHLHLXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000011110000001011110000000000000000; 
+      "test_si2=100000000000000000000000000011111111111110000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 152": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHHXXXLLHLLLXLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXLXLXXXXXXXXXXXHHXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111110000000000000000111000001000000000000000000001; 
+      "test_si2=000000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 153": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLLXXXXXXXXXXXXXXLLHHHXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110100010110000000011001; 
+      "test_si2=100000000011111101111111111111111111110111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 154": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXHHLLLLHLHHLHXXLLLHHHHHLLH; 
+      "test_so2"=HXXXXXXLHLLHHHHHLHXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001111001101111111111000; 
+      "test_si2=100000001000000001111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXHXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 155": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHLLLLLLLXXLLLLLLHHLLL; 
+      "test_so2"=HLLLLLLHLHHXXXXXHLXXXLLLLXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110111111000000000011000; 
+      "test_si2=100000000101111101000000000000000000000001111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXLXH; }
+   Ann {* fast_sequential *}
+   "pattern 156": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXHHLLLHHHHHHLXXLLLHHHHHLLL; 
+      "test_so2"=HXXXXXXLHLLHHHHHLHXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001001111111111111111111; 
+      "test_si2=111111111111111111111111110111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 157": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXHXHXXXXXXXXXXXHHHHH; 
+      "test_so2"=HXXXXXXXLHLXXXXXXHXXXXHXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110100000000000000101111; 
+      "test_si2=100000000111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 158": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXHHLLLXLXLXXXXXLLHLLLLHHHH; 
+      "test_so2"=HXXXXXXXHLLHHHHHXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLX; 
+      "test_si1=0000000000000000000000000000000000000000100011111111111111001; 
+      "test_si2=111111111111111111111111111111111111110000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 159": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHHLXXXLLLXXXXXXXXLLLLL; 
+      "test_so2"=HHLLLLHLXXXLLLLLXLXXLLLLLXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000001000000000000000000100100000000000000000101; 
+      "test_si2=111111111111100000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 160": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLLHXXXXXXXXXLLLLLLLLHLH; 
+      "test_so2"=XXXXXXXXXXXXHXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000001000000000000000000001; 
+      "test_si2=011111111111111111110000000111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 161": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXLLHLLXLXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXHXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000000000001111111111111010; 
+      "test_si2=111111111111111111111111111111111111100000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 162": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLXLXLLLLXXXXXXXXHHLHL; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000011111111111111111111110100000001011100000000000001010; 
+      "test_si2=111111111111111111101111111111111111111111111111100000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 163": Call "load_unload" { 
+      "test_so1"=XXXXXXXHLXXXXXXXXXXXXXXXXXXXXHLHLLXXLLHLLHHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXX; 
+      "test_si1=0000000000000001100000000000000000000001111110000000000001110; 
+      "test_si2=100000000000011100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXHL; }
+   Ann {* fast_sequential *}
+   "pattern 164": Call "load_unload" { 
+      "test_so1"=HXXXXXXXXXXXXXLXHXXXXXXXXXXXXXXXXXXXLLHLHXLXHXXXXXXXXXXXLLHHH; 
+      "test_so2"=LXXXXXXXXXXLLHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001111000001000000000000000001001; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 165": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXLLXXXXXXXXXXXXXXXXXXLHHHHXXLLHLLXXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHX; 
+      "test_si1=0000000000000000000000111110000000000100011100000000000000011; 
+      "test_si2=111111111111000111111111111111111111111111111111111000100000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 166": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXHLXXXHXXXXXXXXXLHLHLLHHLXXXXXHLLLLHHLLLH; 
+      "test_so2"=HXXXXXXXXXXHLLLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXHLXXXXX; 
+      "test_si1=1111111111111111111111111111110010000001000001111111111111101; 
+      "test_si2=111111111111111111111111111111000000011111111110000001111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 167": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHLXXLLHLLXLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXLLXXXXXLXXXXXXXXXHXXXXHHXXXXXXX; 
+      "test_si1=1111111111111111111111111111111001000001000000000000000000000; 
+      "test_si2=100000000000000000011111111111111111110111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 168": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLLHXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110001000001011111111111111110001; 
+      "test_si2=100000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 169": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLHXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXX; 
+      "test_si1=1111111111111111111111111111110100000001000000000000000001100; 
+      "test_si2=100000000000011111110000000000000000000000000000011111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 170": Call "load_unload" { 
+      "test_so1"=XXXLLXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXXLLHLLLLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000110000001011110000000000000110; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 171": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXLLXXXXXXXXXXXXLLHHLXXLLHLLHHLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111000101111000100010000000000000000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 172": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXLHXXXXXXXXLHLLHLHXXHLLHHHHLHXXXXXXXXXXXLLHLH; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111011100000000000001001101; 
+      "test_si2=100000000111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 173": Call "load_unload" { 
+      "test_so1"=XLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHHLLLLXXXXXLLLLLLLHHLH; 
+      "test_so2"=HXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000011100000000000000111111; 
+      "test_si2=111111111111100000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 174": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXLLLHHXXXXXXXXXLLLLLLXXXXX; 
+      "test_so2"=XXXXXXXXXXXHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100111111111111110000111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 175": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHLHHXXXXXXXXXXXXXXXLLHHH; 
+      "test_so2"=XXXXXXXXLLLXXXXXXHXXLXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXLXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001111111111111111110011; 
+      "test_si2=111111111111010000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 176": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHXLXHXXXXXXXXXXXHLHLL; 
+      "test_so2"=LXXXXXXXXXXHLHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXHXXXXXXXXX; 
+      "test_si1=1111111111111111111000000000000000000001100001111111111110101; 
+      "test_si2=100000000000001111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 177": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXHXXXLXXXXXXXXXXXXXLLHLHXLXLXXXXXXXXXXXLLLHH; 
+      "test_so2"=LXXXXXXXXXXLLLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXHXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001010000001011100000000000001111; 
+      "test_si2=111111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 178": Call "load_unload" { 
+      "test_so1"=XXXXXLXHXLXLXXXXXXXXXXXXXXXXXLHLHLXXLLHLLLXHXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXX; 
+      "test_si1=1111111111111111111111111000000000000001100000000000000000010; 
+      "test_si2=100000000000001011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 179": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXLLHLHLLLLXXXXXXXXXXXLLLHL; 
+      "test_so2"=LXXXXXXXXXXLLLHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000111111111100101000001000001111111111110000; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 180": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHHXXXXXXXXXHLLHLHXXLLHLLXLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXX; 
+      "test_si1=0000000000001111111111111111110100000001011110000000000001000; 
+      "test_si2=100000000000000000001111111111111111111111111111011111111000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 181": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXHHXXXXXXXXXXXXXXXXHLHLLXXLLHLLHLLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXHXXX; 
+      "test_si1=1111111111111111111111111111111000000110100000000000000001100; 
+      "test_si2=100000000000011111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 182": Call "load_unload" { 
+      "test_so1"=XXXLLXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXLHLLHLLLLXXXXXHLLLLHXHLLL; 
+      "test_so2"=HXXXXXXXXXXXHLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000011111111111111111111111111000000101011110000000000001100; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXHXXH; }
+   Ann {* fast_sequential *}
+   "pattern 183": Call "load_unload" { 
+      "test_so1"=XXXHHXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLHLHHHHXXXXXLLLLLLLLLLL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111101111111111111111111110011111010100010000000000001010; 
+      "test_si2=100000000000111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 184": Call "load_unload" { 
+      "test_so1"=XXXXXXXLHXXXXXXXXXXXXXXXXXXXXHXHLLXXHLLHLLHLHXXXXXLLLLLLHXHLL; 
+      "test_so2"=HXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111001111010100000000000000011111; 
+      "test_si2=000000000000011111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 185": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXHLXXHLLHLXXXXXXXXXLLLLLLXHXHL; 
+      "test_so2"=XXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111100000000000000000000000000011100000000000000001001; 
+      "test_si2=111111111111000011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 186": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXLLXXXXXXXXXXXXXXXXXXLXXXXXXLLHLLLLLLXXXXXLLLLLLHXXLH; 
+      "test_so2"=LXXXXXXXXXXHXXLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000110100000000000000011111; 
+      "test_si2=111111111111011000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 187": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXLHLLHXXXXXXXXXHLLLLHHLHHH; 
+      "test_so2"=XXXXXXXXXXXHLHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000001000000000000000000000000110111100000000000101000; 
+      "test_si2=111111111111001100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 188": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXHLXXXXXXXXXXXXXXXXLXXXXXXLHLLLHLHLXXXXXLLLLLLLHLLL; 
+      "test_so2"=HXXXXXXXXXXHXHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000011111111111111111111100000011111110000000000001001; 
+      "test_si2=100000000000001000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 189": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXHHXXXXXXXXXXXXXXXXXXXXHXXXXLLHLLHHHHXXXXXLLLLLLXXLHH; 
+      "test_so2"=LXXXXXXXXXXXXLHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110000000110100000000000000011111; 
+      "test_si2=000000011111000011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 190": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLHXXLLLHHXXXXXXXXXLLLLLLHLLLH; 
+      "test_so2"=HXHHHHHXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111010000110100000000000000000110; 
+      "test_si2=111100011111101011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 191": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXLXXXXXXXXXXXXXHHLHHXXLLLHHLXXXXXXXXLLLLLLHHLHH; 
+      "test_so2"=HXXLHHHXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111110000000000001000110100000000000000000100; 
+      "test_si2=111110000000000111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 192": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXLLXXXXXXXXLLLHLXXLLLHHLLXXXXXXXLLLLLLLLLHL; 
+      "test_so2"=HXXXLHHXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111011000001011101111111111110010; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 193": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHXXLLHLLHHLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXHLXXXXXXX; 
+      "test_si1=1111000000000000000000000000001100000001011101111111111110101; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 194": Call "load_unload" { 
+      "test_so1"=XXHLHXXXXXXXXXXXXXXXXXXXXXXXXLHHLLXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXX; 
+      "test_si1=0001111111111000000000000000001101000001000000000000000000000; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 195": Call "load_unload" { 
+      "test_so1"=XHHXXXXXXXXXHXXXXXXXXXXXXXXLLLHHLHXXLLHLLXLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001000000001000011111111111111000; 
+      "test_si2=111111111111111111101111111111111111111100000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 196": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXHLXXXXXXXXXXXXXXXXLHLLLXXLLHLLXXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000111110000111000100010000000000000010; 
+      "test_si2=111111111111111111111111111111111111111111111111111111110000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 197": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXLHXXHXHLLLLXXHLLHHHLLHXXXXXXXXXXXHLLLL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXLHXXX; 
+      "test_si1=1111111111111111111111111111111100000001000001111111111110100; 
+      "test_si2=111111111111111111110000000000001111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 198": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLLXXLLHLLLXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXHHXXXXXXXXXXXXXXLLXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111001000001000011111111111111001; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 199": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLHXXLLHLLLXHXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110001000001011111111111111111100; 
+      "test_si2=100000000000000000000000000000000111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 200": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLHXXLLHLLHXLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXLLXXXXX; 
+      "test_si1=1111111100011111111111111111110001000001000000000000000001010; 
+      "test_si2=111111111111111111111111111111111111111111111111111100111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 201": Call "load_unload" { 
+      "test_so1"=XXXXXXXLLXLXXXXXXXXXXXXXXXXXXHLLLHXXLLHLLLXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXHXXXXX; 
+      "test_si1=1111111111111111111111111111111011000001000010000000000000101; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 202": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXLHXXXXXXXXXXHHLHHXXLLHLLXHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000010110111000000000011111; 
+      "test_si2=111111001000000001000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXHXXLXX; }
+   Ann {* fast_sequential *}
+   "pattern 203": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHLXXXXLLLXXXXHXXXXXXXX; 
+      "test_so2"=XXXHXHXHLHLXXXXXHHXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111000000000000000000100011; 
+      "test_si2=100000111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0000000110; }
+   Call "allclock_launch" { 
+      "_pi"=P000000110; }
+   Call "allclock_capture" { 
+      "_pi"=P000000110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 204": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXLLXXXXXXLLLLLXXHLLLHLLLLXXXXXLLLLLLLLLHH; 
+      "test_so2"=HXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100100111111111111111001; 
+      "test_si2=000000000000000000000111111111111111111000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000100110; }
+   Call "allclock_launch" { 
+      "_pi"=P000100110; }
+   Call "allclock_capture" { 
+      "_pi"=P000100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 205": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHLHHXXXXXXXXXXXXXXXHHLLH; 
+      "test_so2"=XXXXXXXXLHHXXXXXXHXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000011000000000000000000000000000000100000000000000000000011; 
+      "test_si2=000000000000110000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 206": Call "load_unload" { 
+      "test_so1"=XXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXLXXLHLHLXLXXXXXXXHLLLLHLHHLL; 
+      "test_so2"=XXXXXXXXXXXLHHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100011110000000000001101; 
+      "test_si2=100000000000110100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 207": Call "load_unload" { 
+      "test_so1"=XHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLHHHHXXXXXHLLLLHLHHLH; 
+      "test_so2"=HXXXXXXXXXXLHHLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111110111111111111111111111111100000001000010000000000001011; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 208": Call "load_unload" { 
+      "test_so1"=XXXXXLHXXXXXXXXXXXXXXXXXXXXXXHHHLLXXLLHLLXHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000111111000000110111110000000000100010; 
+      "test_si2=111111111111100000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 209": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXHXXXXHHLLHXXLLLHLXHXHXXXXXLLLLLLLLLHL; 
+      "test_so2"=HXXXXXLXXXXHHLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111100000000001000001111111111111111; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 210": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXLHLLLLLXXLLHLLHHLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111110000001000001111111111110010; 
+      "test_si2=111111111111111111110000000011111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 211": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHLXXLLHLLLXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXHHXXXXXXHXXXXXXXXXXXXXXXLLXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000000100001111111111111110; 
+      "test_si2=111111111111111111111111111110000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 212": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLXXXLXXLLLXXXXXXXXXXXXL; 
+      "test_so2"=XXLLLLXLXXXXXXXXXLXXLLLLLXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001000001111111111111110; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 213": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLLLXXLLHLLXXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001111101111111111111101; 
+      "test_si2=100000000000000000000000000000100000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 214": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHLHLHLLLLXXXXXXXXHHHLH; 
+      "test_so2"=LHLLLLHLXXXXXXXXXLXXLLLLLXXXXHLXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111101000001000011111111111110001; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 215": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLHXXLLHLLXXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXHLXXXXXXXHXXXXXXXXXXXXXXLHXXXXX; 
+      "test_si1=1111100000000000000000000000000000000100000001111111111111100; 
+      "test_si2=100000000000101111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 216": Call "load_unload" { 
+      "test_so1"=XXXXHXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLXLXLXXXXXHLLLLHLHLHH; 
+      "test_so2"=HXXXXXXXXXXLHLHHXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111000000000000000110000001000001111111111111100; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 217": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXHHXXXXXXXXXXXXLLHHLXXLLHLLHLHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111010000001011101111111111111010; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 218": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHLXXLLHLLHLLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111010000001011111111111111111111; 
+      "test_si2=000000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 219": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHLXXLLHLLHXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111010000001000010000000000001000; 
+      "test_si2=111111111111111111100000000000000000111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 220": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXLHXXXXXXXXXXXXXXXXHHLHLXXLLHLLLXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100000001111111111111001; 
+      "test_si2=111111111111011111111111111111111111111111100000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 221": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLXHXLXXXXXHLLLLHHLHHH; 
+      "test_so2"=HXXXXXXXXXXHLHHHXXXXXXXXXXXXXXXXXXXXXXLXXXLXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111110000000010000001011101111111111111001; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 222": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXLHXXXXLLLHLXXLLHLLHXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111110000000000100000001111111111111000; 
+      "test_si2=100000000000000111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 223": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXLHLHLHHLLXXXXXHLLLLHLLLLH; 
+      "test_so2"=HXXXXXXXXXXLLLLHXXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000100000001011101111111111111000; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 224": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXHXXXXXXXXLLHLLXXLLHLLXXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000111111111111110111000001011100000000000000110; 
+      "test_si2=111111111111111111110000000000000000000000110000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 225": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXHLXXXXXXXXXXXXHLHHHXXLLHLLLXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXHHXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001110000001000011111111111110111; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111110; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXLH; }
+   Ann {* fast_sequential *}
+   "pattern 226": Call "load_unload" { 
+      "test_so1"=LXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHLXXLLHLLXLHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXHH; 
+      "test_si1=0000000000000010000000000000000000000100011100000000000000111; 
+      "test_si2=111111111111000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 227": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXHLXXXXXXXXXXXXXXXXXXXXXLHLHLXXHLXXXXXHLLLLHHXXXX; 
+      "test_so2"=HXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000010000001011110000000000000010; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 228": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXLXXXXLLLHLXXLLHLLHHXLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111000000000000100000001111111111111010; 
+      "test_si2=100000000000001011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 229": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXLHLHLXHLLXXXXXHLLLLHLLLHL; 
+      "test_so2"=HXXXXXXXXXXLLLHLXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111110001111000001011100000000000000001; 
+      "test_si2=100000000000000000010000000000000000000000000000000000000011; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 230": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXHXXXXXXXXXXXXXXXHLXXLHHHHXXLLHLLLXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHX; 
+      "test_si1=1111111111110000000000000000000000000100000000000000000000010; 
+      "test_si2=100000000000100011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 231": Call "load_unload" { 
+      "test_so1"=XXXXXXXXHXXLLXXXXXXXXXXXXXXXXXXXXXXXLHLHLHXLLXXXXXHLLLLHLHLLL; 
+      "test_so2"=HXXXXXXXXXXLHLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111100000001000001000010000000000000001; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 232": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXHLXXLLLLHXXLLHLLLHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110100000000000000010010; 
+      "test_si2=100000000000111011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 233": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXLHLLHLXLXXXXXXHLLLLHLHHHH; 
+      "test_so2"=HXXXXXXXXXXLHHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100100111111111111111111; 
+      "test_si2=000000000000000000000000001000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 234": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHHHLXXXXXXXXXXXXXXXHHHHH; 
+      "test_so2"=XXXXXXXXLLLXXXXXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110000000110100000000000000000000; 
+      "test_si2=111000000000111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 235": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXLHLLHXXXXXXXXXHLLLLHHLLLL; 
+      "test_so2"=XXHXXXXXXXXHLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000001000000000000000000100011100000000000000011; 
+      "test_si2=100000000000010100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 236": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXHLXXHLXXXXLXXXXLXXXLHLHLLHHLXXXXXHLLLLHLLHLH; 
+      "test_so2"=HXXXXXXXXXXLLHLHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111000000000000000000011111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 237": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLHLXXXXXXXXXLLLLLLLLLLL; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001100001111111111110111; 
+      "test_si2=100000000000000011111111111111111111111111100000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 238": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXLLHLHXXXLXXXXXXXXXXXXXXXL; 
+      "test_so2"=LXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111000000000000000110000001000001111111111110111; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 239": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXLHXXXXXXXXXXXXLLHHLXXLLHLLHXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110101000001000011111111111110110; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 240": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXLLHLLXXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000000100001111111111110011; 
+      "test_si2=111111111111111111111111111111111111111111111111111000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111101110; }
+   Call "allclock_launch" { 
+      "_pi"=P111101110; }
+   Call "allclock_capture" { 
+      "_pi"=P111101110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 241": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLXXXLXXLLLXXXXXXXXXLLXX; 
+      "test_so2"=XXLLLLXLXXXXXXXXXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110011000001000011111111111111000; 
+      "test_si2=111111111111111111100000000000000000000000000000001111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 242": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHXXLLHLLLXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXHXXXX; 
+      "test_si1=0000000000000000000000000000000000000001100001111111111110010; 
+      "test_si2=111111111111111111111111111111111111111111111111111110000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXL; }
+   Ann {* fast_sequential *}
+   "pattern 243": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLHXXXLXXXXXXXXXXXXXXXH; 
+      "test_so2"=LXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXX; 
+      "test_si1=1100000000000000000000000000001101000001011101111111111110001; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 244": Call "load_unload" { 
+      "test_so1"=XLHXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLHXXLLHLLHXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLXXXXX; 
+      "test_si1=1111111111111111111111111111110000000001000001111111111111010; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 245": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXLLHLLXXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXLLXXXXXXXXXXXXXXXXXXHHXXX; 
+      "test_si1=1111111111111111111111111111100000000001000000000000000001111; 
+      "test_si2=100000000000000000001111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 246": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLXXLLHLLXHXLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLX; 
+      "test_si1=0000000000000000000000000000001111000001000011111111111111011; 
+      "test_si2=111111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 247": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHHXXLLHLLXXHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXXXXXXXHLX; 
+      "test_si1=1110000000000000000000000000000111111000100000000000000001101; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 248": Call "load_unload" { 
+      "test_so1"=XXLXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXHLLHHXXXLXXXXXXXXXXXXLXXX; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001010000001011100000000000001101; 
+      "test_si2=100000000000000011110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 249": Call "load_unload" { 
+      "test_so1"=XHLXXXXXHXXXXXXXXXXXXXXXXXXXXLHLHLXXLLHLLLXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001100000001011110000000000001100; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 250": Call "load_unload" { 
+      "test_so1"=XXXXLXXXXXXXXXXXXXXXXXXXXXXXXLHHLLXXLLHLLXHXLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111100001100000001000000000000000000001; 
+      "test_si2=111111111111111111101111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 251": Call "load_unload" { 
+      "test_so1"=XXXHLXXXXXXXXXXXXXXXXXXXXLXXXLHHLLXXLLHLLXHHLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111000001000000000000000001011; 
+      "test_si2=111111111111111111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 252": Call "load_unload" { 
+      "test_so1"=XXXXXLLXXXXXXHHXXXXXXXLXXXXXXLLHHHXXLLHLLXXHHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001011000001011110000000000000110; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 253": Call "load_unload" { 
+      "test_so1"=XXXXXLLXXXXXXXXHHXXXXXXXXXXXXLHLHHXXLLHLLXXLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001001000001011111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 254": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXLLXXXXXXXXXXXXXXXXXXLHLLHXXLLHLLXXLLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111000000000000000000000000001000000000000000001000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 255": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXLXXXXXXXXXXXXXXXXXLXXXXXLLHLLXXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001000000000000000000111; 
+      "test_si2=100000000000000111110000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 256": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXLXXXLLHLLXXXHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111000001011110000000000000011; 
+      "test_si2=100000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 257": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXLXXXXXXXHXXXXXXLLHHHXXLLHLLXLXLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110111000001011100000000000000100; 
+      "test_si2=100000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 258": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXHLXXXXXXXXHLHHHXXLLHLLXXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXLHXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001000000001011100000000000000101; 
+      "test_si2=100000000000000000010000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 259": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXLHXXXXHLXXXXXXXXXXLHLLLXXLLHLLXXLHXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001111110000000011111101; 
+      "test_si2=110000000000000000000000000000011111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 260": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXHXHXXXXXLHHHHHHHHLH; 
+      "test_so2"=HHLLLLLXLXXXXXXXXHXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100111111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000000110; }
+   Call "allclock_launch" { 
+      "_pi"=P000000110; }
+   Call "allclock_capture" { 
+      "_pi"=P000000110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 261": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLXXXXXXXXXXXXXHLXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100101111111111111110111; 
+      "test_si2=000000000000000000000111111111111111111111100000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 262": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHHHLXXXXXXXXXXXXXXXHLHHH; 
+      "test_so2"=XXXXXXXXLLHXXXXXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111010000000000000000000000; 
+      "test_si2=000000000000111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 263": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXHLLLHXXXXLLLXXLLLLLLXXXXX; 
+      "test_so2"=XLLLLLLLXXXLXXXXXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111101000000000000000000000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 264": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111000100000000000000000000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 265": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXHXXXXHLLHHXXXLXXXXXXXXXXXXXHXX; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000001011111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 266": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLXXLLHLLXXXLXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111110000001011100000000000000000; 
+      "test_si2=000000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 267": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHLXXLLHLLXXLXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111101000001011100000000000000000; 
+      "test_si2=000000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 268": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHLHXXLLHLLXXLXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000111000100011111111111110101; 
+      "test_si2=111111111111111111111111111111111111111111111100000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 269": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXHLLHHXXLXXXXXXXXXXXXXXXXL; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110101000001011111111111111111111; 
+      "test_si2=000000000000000000011111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 270": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXLLHLLXXLXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111000100011111111111110001; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 271": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXXXXHLLHHXXLXXXXXXXXXXXXXHXXX; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000001000000000000000001110; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 272": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHXXLLHLLXXXXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXL; 
+      "test_si1=0000000000000000000000000000001110000001011111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 273": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHLXXLLHLLXXLXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXL; 
+      "test_si1=1100000000000000000000000000000011111000100000000000000001101; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 274": Call "load_unload" { 
+      "test_so1"=XLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXHLLHHXXLXXXXXXXXXXXXXXLXX; 
+      "test_so2"=HXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001001000001000000000000000001001; 
+      "test_si2=111111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 275": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXHXXXXXXXXXXXXXXXXXXXLHLLHXXLLHLLLXHXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111100000000000000000000000100000000000000000000111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 276": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXLHLHLXXLXXXXXXHLLLLHXHXXX; 
+      "test_so2"=HXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000011000001000011111111111111111; 
+      "test_si2=111111111111111111100000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXH; }
+   Ann {* fast_sequential *}
+   "pattern 277": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXHXXXXXXXLLLHHXXLLHLLLXHXXXXXXXXXXXXLLLLL; 
+      "test_so2"=LXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100011111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 278": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHLXXXXXXXXXHLLLLHXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111010000000000000000100000; 
+      "test_si2=000011111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 279": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXXXXXXXXXXLXXXXXXXX; 
+      "test_so2"=XXXLXXXXXXXXXXXXXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000101011111111111100000000; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0001000110; }
+   Call "allclock_launch" { 
+      "_pi"=P001000110; }
+   Call "allclock_capture" { 
+      "_pi"=P001000110;
+      "_po"=XXXXHXXX; }
+   Ann {* fast_sequential *}
+   "pattern 280": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHHHXXXXXXXXXXXLXXXXXXXX; 
+      "test_so2"=XXXLXXXXLHLXXXXXXHXXHXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111010111111111111111100000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 281": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLHXXXXXXXXXXXXXLHXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000101000111111111111111111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0011100110; }
+   Call "allclock_launch" { 
+      "_pi"=P011100110; }
+   Call "allclock_capture" { 
+      "_pi"=P011100110;
+      "_po"=XXXXHXXX; }
+   Ann {* fast_sequential *}
+   "pattern 282": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHLHHHHXXXXXXXXXXXXXLXXXXXX; 
+      "test_so2"=XXXXXLXXLLHXXXXXXHXXHXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000111111010100000000000000100000; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 283": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLXXHLLLHXXXXXXXXXLLLLLLXXXXX; 
+      "test_so2"=XXXXXXXXXXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001111111010100000000000000000000; 
+      "test_si2=111111111111000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 284": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLLLXXHLLHLXXXXXXXXXLLLLLLHLLLL; 
+      "test_so2"=XXXXXXXXXHXHLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001110000110100000000000000011111; 
+      "test_si2=000000000000111000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 285": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHHHXXLLLHHXXXXXXXXXLLLLLLLHHHH; 
+      "test_so2"=HXXXXXXXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110000000000100000000000000000000; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLLXXL; }
+   Ann {* fast_sequential *}
+   "pattern 286": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLXXLLLHHXXXXLLLXXXXXXXXLLLLL; 
+      "test_so2"=HHLLLLHLXXXLLLLLXLXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001111111111111111111111; 
+      "test_si2=110000011111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 287": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXXXXXXXXXLHHHHHXXXXX; 
+      "test_so2"=XHLLLLLXLXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000101000111111110000011111; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 288": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLHHLLXXXXXXXXXLLLLLLXXXXX; 
+      "test_so2"=XLLLLLLXLLLXXXXXXHXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110000000000000000000000; 
+      "test_si2=000000011111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 289": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXHHLLLXXXXLLLXXLLHLLLXXXXX; 
+      "test_so2"=XLLLLLLLHLLHHHHHXHXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000100111010100000000000000100000; 
+      "test_si2=000000000000010000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 290": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHLLXXHLHHLXXXXXXXXXLLHLLLXXXXX; 
+      "test_so2"=XXXXXXXXHLHLLHLLXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111000000000000000000000000010000000000000000001000; 
+      "test_si2=000000000000000000000011111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 291": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLHHLXXXXXXXXXXXXXXXLHLLL; 
+      "test_so2"=XXXXXXXXLHHXXXXXXHXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000100111111111111111110111; 
+      "test_si2=000000000000000000000000000000000000000000100000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000100110; }
+   Call "allclock_launch" { 
+      "_pi"=P000100110; }
+   Call "allclock_capture" { 
+      "_pi"=P000100110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 292": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLHHHLXXXXXXXXXXXXXXXHLHHH; 
+      "test_so2"=XXXXXXXXLHHXXXXXXHXXHXXXXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000001110000000000000000000000000101000000000000000101000; 
+      "test_si2=000000000000000000000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0000000110; }
+   Call "allclock_launch" { 
+      "_pi"=P000000110; }
+   Call "allclock_capture" { 
+      "_pi"=P000000110;
+      "_po"=XXXXLXXX; }
+   Ann {* fast_sequential *}
+   "pattern 293": Call "load_unload" { 
+      "test_so1"=XXXXLXXXLXXXXXXXXXXXXXXXXXXXXLLLLLXXHLLLHXXXXXXXXXLLLLLLLHLLL; 
+      "test_so2"=XXXXXLXXXXXXXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111001100000000000000000000; 
+      "test_si2=111111011111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 294": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHLLXXXXXXXXXXXXHLHXXXXX; 
+      "test_so2"=XXXXHHLXLXXXXXXXXHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110110000110100000000000000011111; 
+      "test_si2=110000011111011011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 295": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLHHHXXLLLHHXXXXXXXXXLLLLLLHLHHH; 
+      "test_so2"=HLHHHHHXXXXLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000011000000000000000011111; 
+      "test_si2=000000000000111100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 296": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXLLLHHXXXXLLLXXLLLLLLXXXXX; 
+      "test_so2"=XLLLLLLLXXXHLLLLXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000110000000000000000000000; 
+      "test_si2=000000011111011100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 297": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXLHLLLXXXXLLLXXLLLLLLXXXXX; 
+      "test_so2"=XLLLLLLLXXXHHLLLXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111000110100000000000000000000; 
+      "test_si2=111111111111111011111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 298": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHHHHXXLHLLHXXXXXXXXXHLLLLHHHHHH; 
+      "test_so2"=XXXXXXXXXHXHHHHHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000001100000011100000000000000011111; 
+      "test_si2=000000000000101100000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 299": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXLHHLLXXLLHLLXXXXXXXXXLLLLLLLHHLL; 
+      "test_so2"=LXXXXXXXXXXLHHLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111110011000110000000000000000000000; 
+      "test_si2=111111011111001111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 300": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXHLLHHXXLHHLHXXXXLLLXXXXXXLHXXXXX; 
+      "test_so2"=XXXXXHLLXXXHLLHHXLXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111100100000000000000011111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=LLLLXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 301": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLXXXXXXXXXLLLHHHXXXXX; 
+      "test_so2"=XXXXXXXXHLLXXXXXXHXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=1111111111111111111111111111111111111100100000000000000111111; 
+      "test_si2=111111111111111111111111111111111111111111111111111111111111; }
+   Call "multiclock_capture" { 
+      "_pi"=0111100110; }
+   Call "allclock_launch" { 
+      "_pi"=P111100110; }
+   Call "allclock_capture" { 
+      "_pi"=P111100110;
+      "_po"=XXXHXXXX; }
+   Ann {* fast_sequential *}
+   "pattern 302": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXHHLLLXXXXXXXXXLLHLLLXXXXX; 
+      "test_so2"=XXXXXXXXHLLXXXXXXHXXXLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
+      "test_si1=0000000000000000000000000000000000000101011111011111111111111; 
+      "test_si2=000000000111111111000000000000000000000000000000000000000000; }
+   Call "multiclock_capture" { 
+      "_pi"=0001100110; }
+   Call "allclock_launch" { 
+      "_pi"=P001100110; }
+   Call "allclock_capture" { 
+      "_pi"=P001100110;
+      "_po"=XXXXXXXX; }
+   Ann {* fast_sequential *}
+   "end 302 unload": Call "load_unload" { 
+      "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLXXXXXXXXXLLLXXXXXXXXXXXXX; 
+      "test_so2"=XXXXXXXXLXLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; }
+}

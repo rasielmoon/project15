@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version F-2011.09-SP3 for amd64 -- Jan 26, 2012
-#@ # Date:   Tue Nov 17 16:12:09 2015
+#@ # Date:   Tue Nov 24 16:57:49 2015
 #@ # Run by: masashi-@uranus.naist.jp
 #@ 
 
@@ -4729,11 +4729,11 @@ source -echo -verbose /home/is/masashi-tsu/cad/project15/./tcl/dc_scan.tcl
 #@ # Target Circuit
 #@ ############################################
 #@ source ./tcl/name.txt
-#@ set RTL "rtl/b04.vhd"
-#@ set TOP "b04"
-#@ set CLOCK_PORT "CLK"
+#@ set RTL "rtl/b12.vhd"
+#@ set TOP "b12"
+#@ set CLOCK_PORT "clock"
 #@ set CLOCK_PERIOD "10"
-#@ set RESET_PORT "RESET"
+#@ set RESET_PORT "reset"
 #@ set CHAIN_COUNT "2"
 #@ # -- End source ./tcl/name.txt
 
