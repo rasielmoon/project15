@@ -1,10 +1,10 @@
 STIL 1.0 { Design 2005; }
 Header {
    Title "  TetraMAX (TM)  C-2009.06-i090521_205411 STIL output";
-   Date "Tue Nov 24 16:21:41 2015";
+   Date "Tue Dec  1 13:41:11 2015";
    Source "Minimal STIL for design `b04'";
    History {
-      Ann {*  Tue Nov 24 16:21:38 2015  *}
+      Ann {*  Tue Dec  1 13:41:07 2015  *}
       Ann {*  DFT Compiler F-2011.09-SP3  *}
       Ann {*   Uncollapsed Transition Fault Summary Report *}
       Ann {* ----------------------------------------------- *}
@@ -295,8 +295,8 @@ Pattern "_pattern_" {
    Macro "test_setup";
    Ann {* fast_sequential *}
    "pattern 0": Call "load_unload" { 
-      "test_si1=100101000010101101011111101010110;
-      "test_si2=110010101111111001001010010000000; }
+      "test_si1=110010000101011110110001111101101;
+      "test_si2=111101011000011010111000010110101; }
    Call "multiclock_capture" { 
       "_pi"=1011111111101110; }
    Call "allclock_launch" { 
@@ -309,7 +309,7 @@ Pattern "_pattern_" {
       "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX;
       "test_so2"=LHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
       "test_si1=111111111111111111111111111111111;
-      "test_si2=001100110011001010111111111111111; }
+      "test_si2=001100111110001010111111111111111; }
    Call "multiclock_capture" { 
       "_pi"=1010001100101110; }
    Call "allclock_launch" { 
@@ -321,8 +321,8 @@ Pattern "_pattern_" {
    "pattern 2": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL;
       "test_so2"=HLLLHHLLLHLLHHLLLHLLLLLLLLLLLLLLL; 
-      "test_si1=011111000000001110111100001100011;
-      "test_si2=100101100001100111010011001001001; }
+      "test_si1=011111000000001110111100000110001;
+      "test_si2=100101100001100111111110110010110; }
    Call "multiclock_capture" { 
       "_pi"=1011100101101110; }
    Call "allclock_launch" { 
@@ -334,8 +334,8 @@ Pattern "_pattern_" {
    "pattern 3": Call "load_unload" { 
       "test_so1"=HLHHHHLLLHLHLLHHHHLHLLHHHLLLLLHHH;
       "test_so2"=HLHLHLLHHHLHHLLHHHXXXXXXXXLLLLLHH; 
-      "test_si1=010101110010111111110110011100000;
-      "test_si2=001011101111111101011000101100111; }
+      "test_si1=010111110010010000001000001111110;
+      "test_si2=000111110111111101000111110110011; }
    Call "multiclock_capture" { 
       "_pi"=1001000000101110; }
    Call "allclock_launch" { 
@@ -347,8 +347,8 @@ Pattern "_pattern_" {
    "pattern 4": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL;
       "test_so2"=HLLLLLLLHLLLLLLLHLLLLLLLLLLLLLLLL; 
-      "test_si1=100011110000100001000011110101110;
-      "test_si2=010010100110010111000100101001110; }
+      "test_si1=111111110011010101100010011111011;
+      "test_si2=010110011111010011010110011001110; }
    Call "multiclock_capture" { 
       "_pi"=0000110110100110; }
    Call "allclock_launch" { 
@@ -360,8 +360,8 @@ Pattern "_pattern_" {
    "pattern 5": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLHHLHHLLLLHHLHHL;
       "test_so2"=HLLHHLHHLLLHHLHHLLLHHLHHLLLLLLLLL; 
-      "test_si1=000011101010100000000110000101110;
-      "test_si2=011011010010110100001110110001011; }
+      "test_si1=000101011001100000011011010101100;
+      "test_si2=011011010011110100000101111000111; }
    Call "multiclock_capture" { 
       "_pi"=1011001010101110; }
    Call "allclock_launch" { 
@@ -373,8 +373,8 @@ Pattern "_pattern_" {
    "pattern 6": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLHLHLLHHLLLHLLHH;
       "test_so2"=HLLHLHLLHHLHLHLLHHLHLHLLHHLLLLLLL; 
-      "test_si1=100000000011110001000011110110101;
-      "test_si2=100010000000101011010011101011100; }
+      "test_si1=100000000011110001000011101010001;
+      "test_si2=100011010000110001110100111011100; }
    Call "multiclock_capture" { 
       "_pi"=0011011000100110; }
    Call "allclock_launch" { 
@@ -386,8 +386,8 @@ Pattern "_pattern_" {
    "pattern 7": Call "load_unload" { 
       "test_so1"=LHLLLLHHHLLLHHLHHLLLHHLHHLLLLHHLH;
       "test_so2"=HLLLLHHLHHLLHXXXXXLLLHHLHHLHHHHLL; 
-      "test_si1=001010111100010100001111011011011;
-      "test_si2=010000001010000011000111010011000; }
+      "test_si1=111001101101011110111001101000111;
+      "test_si2=011001101010000000100111101101100; }
    Call "multiclock_capture" { 
       "_pi"=1011011110100110; }
    Call "allclock_launch" { 
@@ -399,8 +399,8 @@ Pattern "_pattern_" {
    "pattern 8": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLHHHHLHHLLLLLLLL;
       "test_so2"=HLLHHHHLHHLHHHHLHHLHHHHLHHLLLLLLL; 
-      "test_si1=111110101101000100101101101011101;
-      "test_si2=100001001111110011101101010000010; }
+      "test_si1=111110101110010000101101111010000;
+      "test_si2=101101101011100000100011000000010; }
    Call "multiclock_capture" { 
       "_pi"=0010100000100110; }
    Call "allclock_launch" { 
@@ -412,8 +412,8 @@ Pattern "_pattern_" {
    "pattern 9": Call "load_unload" { 
       "test_so1"=LLXXXXXHXLLLLLHLHLLLLLHLHLLHHHHLH;
       "test_so2"=HLXXXXXXXXLLLLLHLHLLLLLHLHHXXXXLX; 
-      "test_si1=011011101010001001000110110111000;
-      "test_si2=010111011100000100111010011111100; }
+      "test_si1=111111101110010010100111011001001;
+      "test_si2=011111011100000100011111000001000; }
    Call "multiclock_capture" { 
       "_pi"=1011000001101110; }
    Call "allclock_launch" { 
@@ -425,8 +425,8 @@ Pattern "_pattern_" {
    "pattern 10": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHLLLLLHHLLLLLLHH;
       "test_so2"=HLHLLLLLHHHLLLLLHHHLLLLLHHLLLLLLL; 
-      "test_si1=100000010111011001010110111111110;
-      "test_si2=100001000110010110000100001110110; }
+      "test_si1=001010011101010000011001101110011;
+      "test_si2=100001000110010110110000111101010; }
    Call "multiclock_capture" { 
       "_pi"=1010000110101110; }
    Call "allclock_launch" { 
@@ -438,8 +438,8 @@ Pattern "_pattern_" {
    "pattern 11": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLHHLLLLHLHHLLLLHLLHHHXLH;
       "test_so2"=HLLLLHXLLHLHHLLLLHXXXXXXXXHXXXXXL; 
-      "test_si1=000101110110111111110110010101010;
-      "test_si2=101101101100011000101111111011110; }
+      "test_si1=011110001111001110000111011101110;
+      "test_si2=101101101100001000010010011110010; }
    Call "multiclock_capture" { 
       "_pi"=1010111010101110; }
    Call "allclock_launch" { 
@@ -451,8 +451,8 @@ Pattern "_pattern_" {
    "pattern 12": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLHLXXHLHLHLXXHLHLLLXXXLL;
       "test_so2"=HLHHLHHLHHXXXXXXXXXXXXXXXXXXXXXXX; 
-      "test_si1=011011100011111101101001010010100;
-      "test_si2=101000100011100001001100010101101; }
+      "test_si1=110100010010001111000101011110101;
+      "test_si2=101000100011000011100001111111101; }
    Call "multiclock_capture" { 
       "_pi"=1000010000101110; }
    Call "allclock_launch" { 
@@ -464,8 +464,8 @@ Pattern "_pattern_" {
    "pattern 13": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLLLHLLLLLLLHLLLLLLLHLLL;
       "test_so2"=HLHLLLHLLLLLLLHLLLXXXXXXXXXXXXXXX; 
-      "test_si1=011001101101010101000010101101100;
-      "test_si2=011000101101010010000111011011111; }
+      "test_si1=011001001100111110111001110010101;
+      "test_si2=011100001111010010010000111110111; }
    Call "multiclock_capture" { 
       "_pi"=0000000001101110; }
    Call "allclock_launch" { 
@@ -477,8 +477,8 @@ Pattern "_pattern_" {
    "pattern 14": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHLLLLLLLLLLLLLLL;
       "test_so2"=HLHLLLLLLLHLLLLLLLHLLLLLLLLLLLLLL; 
-      "test_si1=111010111110101011111000000011111;
-      "test_si2=010000000011000000001111110011101; }
+      "test_si1=001110000000101011000110100100100;
+      "test_si2=010100000001000000001001110001101; }
    Call "multiclock_capture" { 
       "_pi"=1001100011001110; }
    Call "allclock_launch" { 
@@ -490,8 +490,8 @@ Pattern "_pattern_" {
    "pattern 15": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHXLLLHHLLLXLLHHL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=001010010110101111111111110000111;
-      "test_si2=010110001010110110010100000000001; }
+      "test_si1=011011101000110011101011101101000;
+      "test_si2=010000001001110110110111100110001; }
    Call "multiclock_capture" { 
       "_pi"=0010100011101110; }
    Call "allclock_launch" { 
@@ -503,8 +503,8 @@ Pattern "_pattern_" {
    "pattern 16": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHHLLLHLHLLLLLHLH;
       "test_so2"=HLHHLLLHLHHHLLLHLHHHLLLHLHLLLLLLL; 
-      "test_si1=100110100101001111101001101010110;
-      "test_si2=100001000110101001100011000111101; }
+      "test_si1=100110001111100111110011111001010;
+      "test_si2=100000000110001001101100100011101; }
    Call "multiclock_capture" { 
       "_pi"=0000101110101110; }
    Call "allclock_launch" { 
@@ -516,8 +516,8 @@ Pattern "_pattern_" {
    "pattern 17": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLXXXLXLLLXXXLXLLLLXXXLXL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLXXXLXLLXXXXXXX; 
-      "test_si1=010000101000011100010101011100101;
-      "test_si2=011010010010101010000111011010100; }
+      "test_si1=011110110111001110000111010101100;
+      "test_si2=011110111011001100001110001101001; }
    Call "multiclock_capture" { 
       "_pi"=1011101100101110; }
    Call "allclock_launch" { 
@@ -529,8 +529,8 @@ Pattern "_pattern_" {
    "pattern 18": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLHHLHHHLLXXXXXX;
       "test_so2"=HLLLHHLHHHLLHHLHHHLLXXLXXXLLLLLLL; 
-      "test_si1=110001111100011010110001101000011;
-      "test_si2=100011100110111000101011101001001; }
+      "test_si1=001110011000110111101011100101010;
+      "test_si2=100111100111110101010001101001101; }
    Call "multiclock_capture" { 
       "_pi"=1001101000101110; }
    Call "allclock_launch" { 
@@ -542,8 +542,8 @@ Pattern "_pattern_" {
    "pattern 19": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLLHLHHLLLLHLHHLXXXXXXXX;
       "test_so2"=HLLLLHLHHLLLLHLHHLXXXXXXXXXXXXXXX; 
-      "test_si1=101010111010101110011101100001001;
-      "test_si2=100011111010000000010011000011111; }
+      "test_si1=110000000010001111011110100000110;
+      "test_si2=100011111010010000010001111000011; }
    Call "multiclock_capture" { 
       "_pi"=1010111100101110; }
    Call "allclock_launch" { 
@@ -555,8 +555,8 @@ Pattern "_pattern_" {
    "pattern 20": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLHHHHLHLLHHHHLHXXXXXXXX;
       "test_so2"=HLLLHHHHLHLLHHHHLHXXXXXXXXXXXXXXX; 
-      "test_si1=001100110101100001000000101100001;
-      "test_si2=001001110001111001110111101101100; }
+      "test_si1=110100111000011010110010001010100;
+      "test_si2=000010001010110000011010110101101; }
    Call "multiclock_capture" { 
       "_pi"=1011111111101110; }
    Call "allclock_launch" { 
@@ -568,8 +568,8 @@ Pattern "_pattern_" {
    "pattern 21": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL;
       "test_so2"=HLXXXXXHXXXXXXXHXXLLLLLLLLLLLLLLL; 
-      "test_si1=111111010000100001010000000000111;
-      "test_si2=001011110000111101001100100101101; }
+      "test_si1=110100100000111010001100010111111;
+      "test_si2=000010010100000101111100100010110; }
    Call "multiclock_capture" { 
       "_pi"=1011011111101110; }
    Call "allclock_launch" { 
@@ -581,8 +581,8 @@ Pattern "_pattern_" {
    "pattern 22": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL;
       "test_so2"=HLHXXXXLXXHXXXXLXXLLLLLLLLLLLLLLL; 
-      "test_si1=100000111101101111101100100011101;
-      "test_si2=100111111110000000010111011010001; }
+      "test_si1=100001001011111101100010111001110;
+      "test_si2=100111111110000000111011111110101; }
    Call "multiclock_capture" { 
       "_pi"=1001011110101110; }
    Call "allclock_launch" { 
@@ -594,8 +594,8 @@ Pattern "_pattern_" {
    "pattern 23": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLHHHHLHLLHHHHLHLXXXXXXXX;
       "test_so2"=HLLHHHHLHLLHHHHLHLXXXXXXXXXXXXXXX; 
-      "test_si1=000101000011111010110000000110011;
-      "test_si2=000000000100000111110111011011101; }
+      "test_si1=110110011011111101011010111000100;
+      "test_si2=000000000000110111100101010000110; }
    Call "multiclock_capture" { 
       "_pi"=1011111111001110; }
    Call "allclock_launch" { 
@@ -607,8 +607,8 @@ Pattern "_pattern_" {
    "pattern 24": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL;
       "test_so2"=HLHHHHHHHXHHHHHHHXLLLLLLLLLLLLLLL; 
-      "test_si1=010100000011010011110011100001110;
-      "test_si2=010001101110011111110101101111110; }
+      "test_si1=110011001110111001100100011100011;
+      "test_si2=011010011110011111100101010100110; }
    Call "multiclock_capture" { 
       "_pi"=1011101111100110; }
    Call "allclock_launch" { 
@@ -620,8 +620,8 @@ Pattern "_pattern_" {
    "pattern 25": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHHHHLHHHLLLLLLLL;
       "test_so2"=HLHHHHLHHHHHHHLHHHHHHHLHHHLLLLLLL; 
-      "test_si1=111011100110111001000101110010011;
-      "test_si2=100111011101111110101110000010001; }
+      "test_si1=111011100100111000000110000010011;
+      "test_si2=100111001001101111100011010010001; }
    Call "multiclock_capture" { 
       "_pi"=1011010111100110; }
    Call "allclock_launch" { 
@@ -633,8 +633,8 @@ Pattern "_pattern_" {
    "pattern 26": Call "load_unload" { 
       "test_so1"=XXLLXXXXXHHHLHLHHHHHLHLHHHHLHHHLL;
       "test_so2"=HLHHHLHLHHLHHXHHXXHHHLHLHHXXXXXXX; 
-      "test_si1=011000101011000010101000100101010;
-      "test_si2=101000000010000000100001011011011; }
+      "test_si1=101110110101001010100000100100010;
+      "test_si2=101000000010000000110011101100101; }
    Call "multiclock_capture" { 
       "_pi"=1000000100101110; }
    Call "allclock_launch" { 
@@ -646,8 +646,8 @@ Pattern "_pattern_" {
    "pattern 27": Call "load_unload" { 
       "test_so1"=XXXXXXXXHLLHLLLLLLLHLLLLLLLLHLLLL;
       "test_so2"=HLHLLLLLLLLLHLLLLLXXXXXXXXXXXXXXX; 
-      "test_si1=000000111100000110010110000100000;
-      "test_si2=101000000010000000100110110011110; }
+      "test_si1=111110000111100010011011010010111;
+      "test_si2=101000000010000000110011001111101; }
    Call "multiclock_capture" { 
       "_pi"=1010101100101110; }
    Call "allclock_launch" { 
@@ -659,8 +659,8 @@ Pattern "_pattern_" {
    "pattern 28": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLHHLHLHLLHHLHLHLLLHHLHL;
       "test_so2"=HLHLLLLLLLLLHHLHLHXXXXXXXXXXXXXXX; 
-      "test_si1=110110101111110100110001101000110;
-      "test_si2=100111000110001010100001000101111; }
+      "test_si1=000100111011010100010010111010000;
+      "test_si2=100111000101001110101010000011110; }
    Call "multiclock_capture" { 
       "_pi"=1011011010101110; }
    Call "allclock_launch" { 
@@ -672,8 +672,8 @@ Pattern "_pattern_" {
    "pattern 29": Call "load_unload" { 
       "test_so1"=XXXHXXXXXLHLHXLHHLHLHXLHHLLXLLXHL;
       "test_so2"=HLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
-      "test_si1=111101110100110010011001010110101;
-      "test_si2=010100000001000000101100000000001; }
+      "test_si1=111111110000010100110001010011010;
+      "test_si2=011000000000000000111100000000110; }
    Call "multiclock_capture" { 
       "_pi"=1001010111101110; }
    Call "allclock_launch" { 
@@ -685,8 +685,8 @@ Pattern "_pattern_" {
    "pattern 30": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHHHLHLHLLLHLHLHL;
       "test_so2"=HLHHHLHLHLHHHLHLHLXXXLXLXLLLLLLLL; 
-      "test_si1=000001011010001100011000100110001;
-      "test_si2=011010010111001101110110000100010; }
+      "test_si1=000100110000010011010100011101000;
+      "test_si2=011110011011001010111001110101101; }
    Call "multiclock_capture" { 
       "_pi"=1011011110001110; }
    Call "allclock_launch" { 
@@ -698,8 +698,8 @@ Pattern "_pattern_" {
    "pattern 31": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLXXHHLXXLLXXHLXX;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=010110011110110000010001110010110;
-      "test_si2=010101101010000101110000101010100; }
+      "test_si1=010010000001001110000110000010010;
+      "test_si2=010101101010000001110000010100110; }
    Call "multiclock_capture" { 
       "_pi"=1000011011001110; }
    Call "allclock_launch" { 
@@ -711,8 +711,8 @@ Pattern "_pattern_" {
    "pattern 32": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHXLHHLLLLLXHHLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=111000001010101101000111011001010;
-      "test_si2=011100100101101001011010111110111; }
+      "test_si1=100111101101011100001010000010110;
+      "test_si2=011000100111101001111100010100010; }
    Call "multiclock_capture" { 
       "_pi"=1000000001001110; }
    Call "allclock_launch" { 
@@ -724,8 +724,8 @@ Pattern "_pattern_" {
    "pattern 33": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHLLLLLLLLLLLLLLL;
       "test_so2"=HLHLLLLLLLHLLLLLLLLLLLLLLLLLLLLLL; 
-      "test_si1=001001000100000011100101101100110;
-      "test_si2=010010000101100101011101000101000; }
+      "test_si1=111010101000001110111010110100100;
+      "test_si2=011101110100010100000101010010110; }
    Call "multiclock_capture" { 
       "_pi"=1011111111001110; }
    Call "allclock_launch" { 
@@ -737,8 +737,8 @@ Pattern "_pattern_" {
    "pattern 34": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXXXXXXXXX;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=101100010110101100010110110010101;
-      "test_si2=011000100000100011110111110111111; }
+      "test_si1=100011100100001111101000111000010;
+      "test_si2=010001101001110011011110001010100; }
    Call "multiclock_capture" { 
       "_pi"=1000100111001110; }
    Call "allclock_launch" { 
@@ -750,8 +750,8 @@ Pattern "_pattern_" {
    "pattern 35": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHXXLLHLLLLXXLHLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=000010011011011011010000000001100;
-      "test_si2=010101001101010010011011000001011; }
+      "test_si1=110011011001000011011001010010101;
+      "test_si2=011110111011001111011111110111101; }
    Call "multiclock_capture" { 
       "_pi"=1011111111001110; }
    Call "allclock_launch" { 
@@ -763,8 +763,8 @@ Pattern "_pattern_" {
    "pattern 36": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXXXXXXXXX;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=110011001110100001001111110110011;
-      "test_si2=011011001011000010001000110001111; }
+      "test_si1=110010000010010101001110111110011;
+      "test_si2=010000001000100010100101110010000; }
    Call "multiclock_capture" { 
       "_pi"=1000110111001110; }
    Call "allclock_launch" { 
@@ -776,8 +776,8 @@ Pattern "_pattern_" {
    "pattern 37": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHXXLHHLLLLXXHHLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=110001010100011011011111001110001;
-      "test_si2=010000001100001010110100110110000; }
+      "test_si1=001001001011011011001010101011000;
+      "test_si2=010100000011101011000001111111001; }
    Call "multiclock_capture" { 
       "_pi"=1000001011001110; }
    Call "allclock_launch" { 
@@ -789,8 +789,8 @@ Pattern "_pattern_" {
    "pattern 38": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHXLHLLLLLLXHLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=100001010110110111011110010010010;
-      "test_si2=010011111001011000101111010010010; }
+      "test_si1=110001011111000111000110111010000;
+      "test_si2=010101100011011101111101011110010; }
    Call "multiclock_capture" { 
       "_pi"=1011111110000110; }
    Call "allclock_launch" { 
@@ -802,8 +802,8 @@ Pattern "_pattern_" {
    "pattern 39": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=110001111100100001100011001000001;
-      "test_si2=010000111011110110100110011111011; }
+      "test_si1=110001001000101011111010011111001;
+      "test_si2=010110110000101011111110011011011; }
    Call "multiclock_capture" { 
       "_pi"=1011111111100110; }
    Call "allclock_launch" { 
@@ -815,8 +815,8 @@ Pattern "_pattern_" {
    "pattern 40": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLL; 
-      "test_si1=100001110110010100000100001001101;
-      "test_si2=010010011111000001110111111001111; }
+      "test_si1=001100001010011001011010110111011;
+      "test_si2=011001100001111000011100010100011; }
    Call "multiclock_capture" { 
       "_pi"=1011111111000110; }
    Call "allclock_launch" { 
@@ -828,8 +828,8 @@ Pattern "_pattern_" {
    "pattern 41": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=010001100010011111101101001101011;
-      "test_si2=011110010111010110001001001111011; }
+      "test_si1=110101100111100101011111010101101;
+      "test_si2=011110000011000011000101001100110; }
    Call "multiclock_capture" { 
       "_pi"=1011111111100110; }
    Call "allclock_launch" { 
@@ -841,8 +841,8 @@ Pattern "_pattern_" {
    "pattern 42": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLL; 
-      "test_si1=100011111011011001001000000011011;
-      "test_si2=010001001001010000101110110110101; }
+      "test_si1=100010111110000011110111110101010;
+      "test_si2=010100011101011001111000100111111; }
    Call "multiclock_capture" { 
       "_pi"=1011111111000110; }
    Call "allclock_launch" { 
@@ -854,8 +854,8 @@ Pattern "_pattern_" {
    "pattern 43": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=000110011000010110011101000001000;
-      "test_si2=100000100011011000011001100000110; }
+      "test_si1=001110011111000100010110111110000;
+      "test_si2=100000000110010011111100000101110; }
    Call "multiclock_capture" { 
       "_pi"=1011111111100110; }
    Call "allclock_launch" { 
@@ -867,8 +867,8 @@ Pattern "_pattern_" {
    "pattern 44": Call "load_unload" { 
       "test_so1"=XXXXXXXXXXXXXXXXXXXXXXXXXXXHXXLHH;
       "test_so2"=HLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX; 
-      "test_si1=100100000001010010111110001101000;
-      "test_si2=011111100010010100010101101101110; }
+      "test_si1=011011001110110000110001100000111;
+      "test_si2=010100010000101000101110100010110; }
    Call "multiclock_capture" { 
       "_pi"=1011110111000110; }
    Call "allclock_launch" { 
@@ -880,8 +880,8 @@ Pattern "_pattern_" {
    "pattern 45": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXLXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=011110000010100110101101111001010;
-      "test_si2=010110011010110111001111111011110; }
+      "test_si1=111010001000100100101110011011101;
+      "test_si2=010001011111110010000011110011101; }
    Call "multiclock_capture" { 
       "_pi"=1011101111000110; }
    Call "allclock_launch" { 
@@ -893,8 +893,8 @@ Pattern "_pattern_" {
    "pattern 46": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXLXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=011000111011011010100111011010110;
-      "test_si2=011101001000001000001001011010010; }
+      "test_si1=110111110110101101100101000111110;
+      "test_si2=011011101000011110101101110010001; }
    Call "multiclock_capture" { 
       "_pi"=1011111111000110; }
    Call "allclock_launch" { 
@@ -906,8 +906,8 @@ Pattern "_pattern_" {
    "pattern 47": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=100010110110011110001001110010011;
-      "test_si2=011010100101101001011000110110110; }
+      "test_si1=010101101000110010111101001100011;
+      "test_si2=010011110110100011111001111111111; }
    Call "multiclock_capture" { 
       "_pi"=1010111111000110; }
    Call "allclock_launch" { 
@@ -919,8 +919,8 @@ Pattern "_pattern_" {
    "pattern 48": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXLXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=101100010000000101100011000101001;
-      "test_si2=010000011111000101101001111111001; }
+      "test_si1=011011000101001000001001000110011;
+      "test_si2=011111101011010010111001011100011; }
    Call "multiclock_capture" { 
       "_pi"=1011111111000110; }
    Call "allclock_launch" { 
@@ -932,8 +932,8 @@ Pattern "_pattern_" {
    "pattern 49": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLXXXXXXXXLLLLLLLL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLL; 
-      "test_si1=011010000000011111111000100000101;
-      "test_si2=100110110000000000011000000100010; }
+      "test_si1=100100011011110101100101000000010;
+      "test_si2=100111011000000100000000110000101; }
    Call "multiclock_capture" { 
       "_pi"=1010011011101110; }
    Call "allclock_launch" { 
@@ -945,8 +945,8 @@ Pattern "_pattern_" {
    "pattern 50": Call "load_unload" { 
       "test_so1"=XXXXXXXXXHXLXXLLHHXLXXLLHLLXXXXXL;
       "test_so2"=HLXXXXXXXXLLXLLXLLXXXXXXXXXXXXXXX; 
-      "test_si1=011111001111100101110110011001100;
-      "test_si2=010110110111011001001000011001010; }
+      "test_si1=101110000111110111111000111011111;
+      "test_si2=011110110111010100111101111001000; }
    Call "multiclock_capture" { 
       "_pi"=0000000011100110; }
    Call "allclock_launch" { 
@@ -958,8 +958,8 @@ Pattern "_pattern_" {
    "pattern 51": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHHLLLLLLLLHLLLLL;
       "test_so2"=HLHHLLLLLLHHLLLLLLHHLLLLLLLLLLLLL; 
-      "test_si1=011101001010001101010001101010001;
-      "test_si2=010100000010000000111111110000011; }
+      "test_si1=100111000011010001010100110110000;
+      "test_si2=011100000010000000110011011011111; }
    Call "multiclock_capture" { 
       "_pi"=0000000001101110; }
    Call "allclock_launch" { 
@@ -971,8 +971,8 @@ Pattern "_pattern_" {
    "pattern 52": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHLLLLLLLLLLLLLLL;
       "test_so2"=HLHLLLLLLLHLLLLLLLHLLLLLLLLLLLLLL; 
-      "test_si1=011000111000111000100111010001011;
-      "test_si2=101010010010100101011011110011010; }
+      "test_si1=011000111110000001001011100100011;
+      "test_si2=101010000101110111100100100111010; }
    Call "multiclock_capture" { 
       "_pi"=0000110000100110; }
    Call "allclock_launch" { 
@@ -984,8 +984,8 @@ Pattern "_pattern_" {
    "pattern 53": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLLLHHLLLLLLHHLLLLHLHLLH;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLHHLLXXXXXXX; 
-      "test_si1=010101100001000110010100011000000;
-      "test_si2=101001100000010011101101010000000; }
+      "test_si1=010101100001101111101101010010000;
+      "test_si2=101000110110001000011001001000000; }
    Call "multiclock_capture" { 
       "_pi"=0000000000100110; }
    Call "allclock_launch" { 
@@ -997,8 +997,8 @@ Pattern "_pattern_" {
    "pattern 54": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLLLLLLLLLLLLLLLLLLLHLHHL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLLLLLLLXXXXXXX; 
-      "test_si1=011110110101010110111010000000011;
-      "test_si2=011001000010010001010110010100100; }
+      "test_si1=000101010111010010001101000101101;
+      "test_si2=010001000010010001101100111000110; }
    Call "multiclock_capture" { 
       "_pi"=1000000111101110; }
    Call "allclock_launch" { 
@@ -1010,8 +1010,8 @@ Pattern "_pattern_" {
    "pattern 55": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLHHHLLLLLLLHLLLLL;
       "test_so2"=HLHHHLLLLLHHHLLLLLXXXLLLLLLLLLLLL; 
-      "test_si1=110100000110000011001110100100111;
-      "test_si2=011101111101000100000011001111011; }
+      "test_si1=110100011001000100111101111000010;
+      "test_si2=011000110111000011100001101111101; }
    Call "multiclock_capture" { 
       "_pi"=0010111100100110; }
    Call "allclock_launch" { 
@@ -1023,8 +1023,8 @@ Pattern "_pattern_" {
    "pattern 56": Call "load_unload" { 
       "test_so1"=LLLLLLLLLLLLLLLLLLLXXXXLXLLLXXXXL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLLXXXXLXLLLLLLL; 
-      "test_si1=000010111011110000110101000111111;
-      "test_si2=101110010101000101011100000010010; }
+      "test_si1=000011111000100100000110111011011;
+      "test_si2=101111001001100000000111110010101; }
    Call "multiclock_capture" { 
       "_pi"=0010111110100110; }
    Call "allclock_launch" { 
@@ -1036,8 +1036,8 @@ Pattern "_pattern_" {
    "pattern 57": Call "load_unload" { 
       "test_so1"=XXXXXXXXXLXXXXXLHLXXXXXLHLLXXXXXL;
       "test_so2"=HLXXXXXXXXXXXXXXXXLXXXXXLHXXXXXXX; 
-      "test_si1=111000010100100111010001100001001;
-      "test_si2=100000000101111101000000000011101; }
+      "test_si1=001001111001101000011111110011101;
+      "test_si2=100001010101111101101101011001111; }
    Call "multiclock_capture" { 
       "_pi"=1000111101101110; }
    Call "allclock_launch" { 

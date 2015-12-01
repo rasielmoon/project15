@@ -3,7 +3,7 @@ STIL 1.0 {
 }
 Header {
     Title "Minimal STIL for design `b04'";
-    Date "Tue Nov 24 16:21:38 2015";
+    Date "Tue Dec  1 13:41:07 2015";
     Source "DFT Compiler F-2011.09-SP3";
 }
 Signals {
